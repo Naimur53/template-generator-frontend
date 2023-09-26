@@ -1,0 +1,10 @@
+.sidebar-heading{
+    @apply font-robot font-bold text-xl
+}
+
+.sidebar-single-items-wrap{
+    @apply flex gap-[17px] px-[16px] items-center  py-[12px]  rounded-2xl
+}
+.sidebar-single-items-wrap:hover{
+    @apply  bg-[#25254A80]
+}

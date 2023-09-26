@@ -24,6 +24,10 @@ const Sidebar = ({}: Props) => {
       ],
     },
   ];
+  const navItemsBackend = [
+    { icon: "/icons/mongodb.png", title: "Mongoose", to: "/mongoose" },
+    { icon: "/icons/prisma.png", title: "Postgres", to: "/postgres" },
+  ];
   return (
     <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bg-primary">
       <div className="p-[30px]">
@@ -42,7 +46,7 @@ const Sidebar = ({}: Props) => {
               </div>
             </CustomLink>
           ))}
-          {navItemsFrontEnd.map((single) => (
+          {navItemsBackend.map((single) => (
             <CustomLink href={`/tools/${single.to}`} key={single.title}>
               <div className="sidebar-single-items-wrap">
                 <Image

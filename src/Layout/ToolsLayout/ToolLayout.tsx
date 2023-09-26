@@ -10,8 +10,8 @@ const ToolLayout: React.FC<LayoutProps> = ({ children }) => {
       <NavBar></NavBar>
       <div className="flex justify-between w-full">
         <Sidebar></Sidebar>
-        <div className="w-full  bg-main-dark">
-          <div>{children}</div>
+        <div className="w-full ml-[320px] p-2 bg-main-dark">
+          <>{children}</>
         </div>
       </div>
     </div>

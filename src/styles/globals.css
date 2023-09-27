@@ -16,3 +16,14 @@
         @apply bg-main-dark text-white
     }
 }
+@layer components{
+    .commonBox{
+        @apply bg-secondary p-4 rounded-2xl min-h-[250px]
+    }
+    .commonBox-title-wrap{
+        @apply flex items-center gap-4 mb-5
+    }
+    .commonBox-title-wrap h4{
+        @apply font-medium text-lg
+    }
+}

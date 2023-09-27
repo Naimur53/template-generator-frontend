@@ -5,7 +5,7 @@ type Props = {};
 
 const Sidebar = ({}: Props) => {
   const navItemsFrontEnd = [
-    { icon: "/icons/react.png", title: "React", to: "/react" },
+    { icon: "/icons/react.png", title: "React", to: "/reactTem" },
     {
       icon: "/icons/react-redux.png",
       title: "React Redux",
@@ -46,6 +46,7 @@ const Sidebar = ({}: Props) => {
               </div>
             </CustomLink>
           ))}
+          <h2 className="sidebar-heading mt-[30px]">Backend Generator</h2>
           {navItemsBackend.map((single) => (
             <CustomLink href={`/tools/${single.to}`} key={single.title}>
               <div className="sidebar-single-items-wrap">

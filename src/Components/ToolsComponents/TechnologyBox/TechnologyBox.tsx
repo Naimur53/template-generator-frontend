@@ -25,11 +25,10 @@ const TechnologyBox: React.FC<Props> = ({ technology, onChange }) => {
           className={`${technology === ITechnology.JavaScript ? "active" : ""}`}
         >
           <Image
-            width={32}
+            width={120}
             height={26}
             src="/images/javascript-img.png"
             alt="code"
-            layout="responsive"
             className="w-full"
           ></Image>
         </button>
@@ -38,11 +37,10 @@ const TechnologyBox: React.FC<Props> = ({ technology, onChange }) => {
           className={`${technology === ITechnology.Typescript ? "active" : ""}`}
         >
           <Image
-            width={32}
+            width={120}
             height={26}
             src="/images/typescript-img.png"
             alt="code"
-            layout="responsive"
             className="w-full"
           ></Image>
         </button>

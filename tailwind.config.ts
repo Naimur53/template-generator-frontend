@@ -18,6 +18,10 @@ const config: Config = {
         "main-dark": "#423D60",
         primary: "#181823",
         secondary: "#1F1F25",
+        "error-primary": "#ef4444",
+      },
+      fontFamily: {
+        robot: ["Quantico", "sans-serif"],
       },
     },
   },

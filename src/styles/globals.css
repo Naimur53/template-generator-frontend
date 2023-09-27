@@ -4,10 +4,7 @@
 @tailwind utilities;
 
 
-@layer base {
-    .font-robot{
-        font-family: 'Quantico', sans-serif;
-    }
+@layer base { 
     .font-sans{
         font-family: 'Quattrocento Sans', sans-serif;
     }
@@ -25,5 +22,8 @@
     }
     .commonBox-title-wrap h4{
         @apply font-medium text-lg
+    }
+    input.error{
+        @apply border-red-500 focus:outline-none
     }
 }

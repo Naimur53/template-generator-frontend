@@ -19,19 +19,19 @@ export const frontEndGen = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addTechnology: (state, action) => {
+    addTechnology: (state, action: PayloadAction<ITechnology>) => {
       state.technology = action.payload;
     },
-    addPage: (state, action) => {
+    addPage: (state, action: PayloadAction<string>) => {
       state.pages.push(action.payload);
     },
-    removePage: (state, action) => {
-      state.pages.push(action.payload);
+    removePage: (state, action: PayloadAction<string>) => {
+      state.pages = state.pages.filter((single) => single !== action.payload);
     },
   },
 });
 
-export const { addTechnology } = frontEndGen.actions;
+export const { addTechnology, addPage, removePage } = frontEndGen.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

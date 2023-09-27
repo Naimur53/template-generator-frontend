@@ -3,10 +3,11 @@ import React, { ReactNode } from "react";
 type Props = {
   children: ReactNode;
   href: string;
+  target?: string;
 };
-const CustomLink: React.FC<Props> = ({ children, href }) => {
+const CustomLink: React.FC<Props> = ({ children, href, target }) => {
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref target={target}>
       {children}
     </Link>
   );

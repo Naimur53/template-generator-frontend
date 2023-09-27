@@ -6,11 +6,15 @@ import { useSelector } from "react-redux";
 import { addTechnology } from "@/redux/features/frontEndGen/frontEndGen";
 import React from "react";
 import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
+import FrameworkBox from "@/Components/ToolsComponents/FrameworkBox/FrameworkBox";
+import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackageBox";
 
 type Props = {};
 
 const ReactTem = (props: Props) => {
-  const { technology, pages } = useAppSelector((state) => state.frontEndGen);
+  const { technology, pages, cssFrameWork } = useAppSelector(
+    (state) => state.frontEndGen
+  );
   const dispatch = useAppDispatch();
 
   const handleTechnologyChange = (givenTech: ITechnology): void => {
@@ -24,6 +28,12 @@ const ReactTem = (props: Props) => {
           onChange={handleTechnologyChange}
         ></TechnologyBox>
         <PagesBox pages={pages}></PagesBox>
+        <div className="col-span-2">
+          <FrameworkBox activeFrameWork={cssFrameWork}></FrameworkBox>
+        </div>
+        <div className="col-span-2">
+          <NpmPackageBox></NpmPackageBox>
+        </div>
       </div>
     </ToolLayout>
   );

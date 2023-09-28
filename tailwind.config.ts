@@ -19,6 +19,7 @@ const config: Config = {
         primary: "#181823",
         secondary: "#1F1F25",
         "error-primary": "#ef4444",
+        "btn-primary": "#00898B",
       },
       fontFamily: {
         robot: ["Quantico", "sans-serif"],

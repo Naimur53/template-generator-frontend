@@ -1,5 +1,10 @@
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
-import { addHook, removeHook } from "@/redux/features/frontEndGen/frontEndGen";
+import {
+  addAuth,
+  addHook,
+  removeAuth,
+  removeHook,
+} from "@/redux/features/frontEndGen/frontEndGen";
 import Image from "next/image";
 import React from "react";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +13,7 @@ import CustomLink from "@/Components/Shared/CustomLink";
 type Props = {};
 
 const AuthBox = (props: Props) => {
-  const selectedAuth = useAppSelector((state) => state.frontEndGen.hooks);
+  const selectedAuth = useAppSelector((state) => state.frontEndGen.auths);
   const dispatch = useAppDispatch();
   const allAuth = ["email/password", "google", "facebook", "github", "twitter"];
   const isSelected = (name: string): boolean => {
@@ -16,9 +21,9 @@ const AuthBox = (props: Props) => {
   };
   const handleCheckbox = (name: string) => {
     if (isSelected(name)) {
-      dispatch(removeHook(name));
+      dispatch(removeAuth(name));
     } else {
-      dispatch(addHook(name));
+      dispatch(addAuth(name));
     }
   };
   return (

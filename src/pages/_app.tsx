@@ -13,7 +13,14 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <Component {...pageProps} />
       </Provider>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-center"
+        theme={"dark"}
+        pauseOnHover={false}
+        hideProgressBar={true}
+        limit={2}
+        autoClose={1000}
+      />
     </>
   );
 }

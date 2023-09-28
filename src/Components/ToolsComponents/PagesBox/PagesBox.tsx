@@ -1,16 +1,14 @@
-import { useAppDispatch } from "@/redux/app/store";
+import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import { addPage, removePage } from "@/redux/features/frontEndGen/frontEndGen";
 import { textChecker } from "@/utils/textChecker";
 import { faClose, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
-type Props = {
-  pages: string[];
-};
+type Props = {};
 
-const PagesBox: React.FC<Props> = ({ pages }) => {
+const PagesBox: React.FC<Props> = () => {
+  const pages = useAppSelector((state) => state.frontEndGen.pages);
   const [shouldAdd, setShouldAdd] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>("");
   const [error, setError] = useState<{ isError: boolean; message: string }>({

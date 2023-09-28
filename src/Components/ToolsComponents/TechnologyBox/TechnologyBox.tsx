@@ -1,13 +1,18 @@
 import { ITechnology } from "@/interface";
+import { useAppDispatch, useAppSelector } from "@/redux/app/store";
+import { addTechnology } from "@/redux/features/frontEndGen/frontEndGen";
 import Image from "next/image";
 import React from "react";
 
-type Props = {
-  technology: ITechnology;
-  onChange: (technology: ITechnology) => void;
-};
+type Props = {};
 
-const TechnologyBox: React.FC<Props> = ({ technology, onChange }) => {
+const TechnologyBox: React.FC<Props> = () => {
+  const technology = useAppSelector((state) => state.frontEndGen.technology);
+  const dispatch = useAppDispatch();
+
+  const handleTechnologyChange = (givenTech: ITechnology): void => {
+    dispatch(addTechnology(givenTech));
+  };
   return (
     <div className="commonBox">
       <div className="commonBox-title-wrap">
@@ -21,7 +26,7 @@ const TechnologyBox: React.FC<Props> = ({ technology, onChange }) => {
       </div>
       <div className="technology-buttons-wrap">
         <button
-          onClick={() => onChange(ITechnology.JavaScript)}
+          onClick={() => handleTechnologyChange(ITechnology.JavaScript)}
           className={`${technology === ITechnology.JavaScript ? "active" : ""}`}
         >
           <Image
@@ -33,7 +38,7 @@ const TechnologyBox: React.FC<Props> = ({ technology, onChange }) => {
           ></Image>
         </button>
         <button
-          onClick={() => onChange(ITechnology.Typescript)}
+          onClick={() => handleTechnologyChange(ITechnology.Typescript)}
           className={`${technology === ITechnology.Typescript ? "active" : ""}`}
         >
           <Image

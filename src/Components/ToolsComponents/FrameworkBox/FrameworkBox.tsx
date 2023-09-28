@@ -1,16 +1,16 @@
-import { useAppDispatch } from "@/redux/app/store";
+import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import { addCssFrameWork } from "@/redux/features/frontEndGen/frontEndGen";
 import Image from "next/image";
 import React from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface Props {
-  activeFrameWork: string | undefined;
-}
-const FrameworkBox: React.FC<Props> = ({ activeFrameWork }) => {
+interface Props {}
+const FrameworkBox: React.FC<Props> = () => {
   const dispatch = useAppDispatch();
-
+  const activeFrameWork = useAppSelector(
+    (state) => state.frontEndGen.cssFrameWork
+  );
   const frameWorks = [
     {
       name: "Material Ui",

@@ -9,6 +9,7 @@ interface frontEndGenState {
   cssFrameWork: string | undefined;
   npmPackages: ICommonPackage[];
   hooks: string[];
+  auths: string[];
 }
 
 // Define the initial state using that type
@@ -18,6 +19,7 @@ const initialState: frontEndGenState = {
   cssFrameWork: undefined,
   npmPackages: [],
   hooks: [],
+  auths: [],
 };
 
 export const frontEndGen = createSlice({
@@ -51,6 +53,12 @@ export const frontEndGen = createSlice({
     removeHook: (state, action: PayloadAction<string>) => {
       state.hooks = state.hooks.filter((single) => single !== action.payload);
     },
+    addAuth: (state, action: PayloadAction<string>) => {
+      state.auths.push(action.payload);
+    },
+    removeAuth: (state, action: PayloadAction<string>) => {
+      state.auths = state.auths.filter((single) => single !== action.payload);
+    },
   },
 });
 
@@ -63,6 +71,8 @@ export const {
   removePackage,
   addHook,
   removeHook,
+  addAuth,
+  removeAuth,
 } = frontEndGen.actions;
 
 export default frontEndGen.reducer;

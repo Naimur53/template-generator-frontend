@@ -9,6 +9,7 @@ import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
 import FrameworkBox from "@/Components/ToolsComponents/FrameworkBox/FrameworkBox";
 import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackageBox";
 import HooksBox from "@/Components/ToolsComponents/HooksBox/HooksBox";
+import AuthBox from "@/Components/ToolsComponents/AuthBox/AuthBox";
 
 type Props = {};
 
@@ -36,6 +37,7 @@ const ReactTem = (props: Props) => {
           <NpmPackageBox></NpmPackageBox>
         </div>
         <HooksBox></HooksBox>
+        <AuthBox></AuthBox>
       </div>
     </ToolLayout>
   );

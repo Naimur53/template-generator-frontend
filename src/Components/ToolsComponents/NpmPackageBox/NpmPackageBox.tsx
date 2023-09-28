@@ -34,22 +34,28 @@ const NpmPackageBox: React.FC<Props> = (props) => {
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
-        <div className="flex gap-3 flex-wrap">
-          {npmPackages.map((single) => (
-            <div
-              key={single.name}
-              className="flex items-center rounded-xl  py-1 px-3 gap-3  bg-blue-400  "
-            >
-              <p>{single.name}</p>
-              <button
-                className="mt-1"
-                onClick={() => dispatch(removePackage(single))}
+        {npmPackages.length ? (
+          <div className="flex gap-3 flex-wrap">
+            {npmPackages.map((single) => (
+              <div
+                key={single.name}
+                className="flex items-center rounded-xl  py-1 px-3 gap-3  bg-blue-400  "
               >
-                <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
-              </button>
-            </div>
-          ))}
-        </div>
+                <p>{single.name}</p>
+                <button
+                  className="mt-1"
+                  onClick={() => dispatch(removePackage(single))}
+                >
+                  <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <p>No packages selected</p>
+          </div>
+        )}
       </div>
       <Popup
         open={open}

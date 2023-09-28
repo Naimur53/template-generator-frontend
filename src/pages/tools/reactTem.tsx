@@ -8,6 +8,7 @@ import React from "react";
 import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
 import FrameworkBox from "@/Components/ToolsComponents/FrameworkBox/FrameworkBox";
 import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackageBox";
+import HooksBox from "@/Components/ToolsComponents/HooksBox/HooksBox";
 
 type Props = {};
 
@@ -34,6 +35,7 @@ const ReactTem = (props: Props) => {
         <div className="col-span-2">
           <NpmPackageBox></NpmPackageBox>
         </div>
+        <HooksBox></HooksBox>
       </div>
     </ToolLayout>
   );

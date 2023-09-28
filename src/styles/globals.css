@@ -21,7 +21,7 @@
         @apply flex items-center gap-4 mb-5
     }
     .commonBox-title-wrap h4{
-        @apply font-medium text-lg
+        @apply font-medium text-lg font-robot
     }
     input.error{
         @apply border-red-500 focus:outline-none

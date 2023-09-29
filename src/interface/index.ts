@@ -7,3 +7,13 @@ export interface ICommonPackage {
   version: string;
   doc: string;
 }
+
+export interface IFirebaseConfig {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  measurementId: string;
+}

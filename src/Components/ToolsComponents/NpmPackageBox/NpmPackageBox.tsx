@@ -35,21 +35,23 @@ const NpmPackageBox: React.FC<Props> = (props) => {
           </button>
         </div>
         {npmPackages.length ? (
-          <div className="flex gap-3 flex-wrap">
-            {npmPackages.map((single) => (
-              <div
-                key={single.name}
-                className="flex items-center rounded-xl  py-1 px-3 gap-3  bg-blue-400  "
-              >
-                <p>{single.name}</p>
-                <button
-                  className="mt-1"
-                  onClick={() => dispatch(removePackage(single))}
+          <div className="h-[150px] overflow-y-scroll">
+            <div className="flex gap-3 flex-wrap ">
+              {npmPackages.map((single) => (
+                <div
+                  key={single.name}
+                  className="flex items-center rounded-xl  py-1 px-3 gap-3  bg-blue-400  "
                 >
-                  <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
-                </button>
-              </div>
-            ))}
+                  <p>{single.name}</p>
+                  <button
+                    className="mt-1"
+                    onClick={() => dispatch(removePackage(single))}
+                  >
+                    <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="flex justify-center items-center h-full">

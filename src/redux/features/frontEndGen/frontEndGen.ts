@@ -1,15 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
-import { ICommonPackage, ITechnology } from "@/interface";
-interface IFirebaseConfig {
-  apiKey: string;
-  authDomain: string;
-  projectId: string;
-  storageBucket: string;
-  messagingSenderId: string;
-  appId: string;
-  measurementId: string;
-}
+import { ICommonPackage, IFirebaseConfig, ITechnology } from "@/interface";
+
 // Define a type for the slice state
 interface frontEndGenState {
   name: string | undefined;
@@ -19,6 +11,7 @@ interface frontEndGenState {
   npmPackages: ICommonPackage[];
   hooks: string[];
   auths: string[];
+  apis: string[];
   firebaseConfig?: IFirebaseConfig;
 }
 
@@ -31,6 +24,7 @@ const initialState: frontEndGenState = {
   npmPackages: [],
   hooks: [],
   auths: [],
+  apis: [],
   firebaseConfig: undefined,
 };
 
@@ -74,6 +68,12 @@ export const frontEndGen = createSlice({
     removeAuth: (state, action: PayloadAction<string>) => {
       state.auths = state.auths.filter((single) => single !== action.payload);
     },
+    addApis: (state, action: PayloadAction<string>) => {
+      state.apis.push(action.payload);
+    },
+    removeApis: (state, action: PayloadAction<string>) => {
+      state.apis = state.apis.filter((single) => single !== action.payload);
+    },
     addFirebaseConfig: (
       state,
       action: PayloadAction<IFirebaseConfig | undefined>
@@ -95,6 +95,9 @@ export const {
   removeHook,
   addAuth,
   removeAuth,
+  addApis,
+  removeApis,
+  addFirebaseConfig,
 } = frontEndGen.actions;
 
 export default frontEndGen.reducer;

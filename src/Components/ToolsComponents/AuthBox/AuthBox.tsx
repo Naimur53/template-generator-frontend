@@ -6,13 +6,17 @@ import {
   removeHook,
 } from "@/redux/features/frontEndGen/frontEndGen";
 import Image from "next/image";
-import React from "react";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import { faGears } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomLink from "@/Components/Shared/CustomLink";
+import { toast } from "react-toastify";
+import Popup from "reactjs-popup";
+import AuthBoxModal from "./AuthBoxModal";
 type Props = {};
 
 const AuthBox = (props: Props) => {
+  const [open, setOpen] = useState(false);
   const selectedAuth = useAppSelector((state) => state.frontEndGen.auths);
   const dispatch = useAppDispatch();
   const allAuth = ["email/password", "google", "facebook", "github", "twitter"];
@@ -26,10 +30,23 @@ const AuthBox = (props: Props) => {
       dispatch(addAuth(name));
     }
   };
+  const handleModalOpen = () => {
+    if (!selectedAuth.length) {
+      toast.error("please select one authentication method below");
+      return;
+    }
+    setOpen(true);
+  };
   return (
     <div>
       <div className="commonBox">
-        <div className="commonBox-title-wrap">
+        <div
+          className={`commonBox-title-wrap transition-all ${
+            selectedAuth.length
+              ? "grayscale-0 opacity-100"
+              : "grayscale opacity-40"
+          }`}
+        >
           <Image
             width={20}
             height={26}
@@ -37,11 +54,28 @@ const AuthBox = (props: Props) => {
             alt="code"
           ></Image>
           <h4>Firebase Auth</h4>
+          <button onClick={handleModalOpen} className="ml-auto p-1">
+            <FontAwesomeIcon icon={faGears}></FontAwesomeIcon>{" "}
+          </button>
+          <Popup
+            open={open}
+            className="p-0"
+            contentStyle={{ padding: "0px", border: "0px" }}
+            onClose={() => setOpen(false)}
+          >
+            <div className="bg-main-dark p-5">
+              <AuthBoxModal></AuthBoxModal>
+            </div>
+          </Popup>
         </div>
+
         <div className="">
           {allAuth.map((single, i) => (
             <div key={single}>
-              <div className="flex items-center gap-2 font-semibold pb-2 hover:opacity-70 opacity-100 transition-all ">
+              <label
+                htmlFor={single}
+                className="flex items-center gap-2 font-semibold pb-2 hover:opacity-70 opacity-100 transition-all "
+              >
                 <input
                   type="checkbox"
                   id={single}
@@ -49,10 +83,10 @@ const AuthBox = (props: Props) => {
                   checked={isSelected(single)}
                   onChange={() => handleCheckbox(single)}
                 />
-                <label className="cursor-pointer capitalize" htmlFor={single}>
+                <span className="cursor-pointer capitalize select-none">
                   {single}
-                </label>
-              </div>
+                </span>
+              </label>
             </div>
           ))}
         </div>

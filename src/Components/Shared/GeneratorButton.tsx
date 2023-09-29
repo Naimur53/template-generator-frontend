@@ -18,6 +18,7 @@ const GeneratorButton = ({ url }: Props) => {
     npmPackages,
     hooks,
     auths,
+    apis,
     firebaseConfig,
   } = useAppSelector((state) => state.frontEndGen);
 
@@ -47,7 +48,7 @@ const GeneratorButton = ({ url }: Props) => {
             exactMatchFields: ["age"],
           },
         ],
-        apis: ["user", "book", "cow"],
+        apis: apis.length ? apis : undefined,
         pages,
         technology,
         firebaseAuth: {

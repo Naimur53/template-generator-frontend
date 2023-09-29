@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { useAppSelector } from "@/redux/app/store";
+import { useDebounce } from "@/Hooks/useDebounce";
 type Props = {
   url: string;
 };
@@ -21,8 +22,18 @@ const GeneratorButton = ({ url }: Props) => {
     apis,
     firebaseConfig,
   } = useAppSelector((state) => state.frontEndGen);
+  const debouncedValue = useDebounce<string>(name || "demo", 500);
+  const [error, setError] = useState(false);
 
   const handleGenerate = () => {
+    const camelCase = /^[a-z][a-zA-Z]*$/;
+    if (!camelCase.test(debouncedValue)) {
+      toast.error(
+        "Please enter project name in pure word no special character, space, or number allowed ",
+        { autoClose: 5000 }
+      );
+      return;
+    }
     setLoading(true);
     fetch(url, {
       method: "POST",

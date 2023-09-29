@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
         pauseOnHover={false}
         hideProgressBar={true}
         limit={2}
-        autoClose={1000}
+        autoClose={2000}
       />
     </>
   );

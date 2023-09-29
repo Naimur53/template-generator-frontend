@@ -17,3 +17,9 @@ export interface IFirebaseConfig {
   appId: string;
   measurementId: string;
 }
+export interface ISingleNavItem {
+  icon?: string;
+  title: string;
+  to?: string;
+  subNav?: ISingleNavItem[];
+}

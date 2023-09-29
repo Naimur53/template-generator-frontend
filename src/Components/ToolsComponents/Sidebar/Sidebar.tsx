@@ -1,10 +1,11 @@
 import CustomLink from "@/Components/Shared/CustomLink";
+import { ISingleNavItem } from "@/interface";
 import Image from "next/image";
 import React from "react";
 type Props = {};
 
 const Sidebar = ({}: Props) => {
-  const navItemsFrontEnd = [
+  const navItemsFrontEnd: ISingleNavItem[] = [
     { icon: "/icons/react.png", title: "React", to: "/reactTem" },
     {
       icon: "/icons/react-redux.png",
@@ -24,7 +25,7 @@ const Sidebar = ({}: Props) => {
       ],
     },
   ];
-  const navItemsBackend = [
+  const navItemsBackend: ISingleNavItem[] = [
     { icon: "/icons/mongodb.png", title: "Mongoose", to: "/mongoose" },
     { icon: "/icons/prisma.png", title: "Postgres", to: "/postgres" },
   ];
@@ -50,12 +51,14 @@ const Sidebar = ({}: Props) => {
           {navItemsBackend.map((single) => (
             <CustomLink href={`/tools/${single.to}`} key={single.title}>
               <div className="sidebar-single-items-wrap">
-                <Image
-                  width={30}
-                  height={30}
-                  src={single.icon}
-                  alt={single.title}
-                />
+                {single.icon && (
+                  <Image
+                    width={30}
+                    height={30}
+                    src={single.icon}
+                    alt={single.title}
+                  />
+                )}
                 <span className="font-semibold text-lg">{single.title}</span>
               </div>
             </CustomLink>

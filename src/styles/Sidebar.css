@@ -16,3 +16,15 @@
 .sidebar-single-items-wrap:hover::before{
     @apply  w-[100%] opacity-100
 }
+
+.singleMultiNavContentWrap{
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: all .3s;
+    @apply grid
+}
+.singleMultiNavContentWrap.open{
+    grid-template-rows: 1fr;
+    overflow: hidden; 
+    @apply mt-2
+}

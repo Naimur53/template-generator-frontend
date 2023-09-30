@@ -37,6 +37,9 @@ const AuthBoxModal = (props: Props) => {
           return;
         }
       }
+      if (!Object.keys(parsed).length) {
+        return;
+      }
       setParsedData(parsed);
 
       setError(null);

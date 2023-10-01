@@ -6,7 +6,7 @@ import React, { useState } from "react";
 type Props = {} & ISingleNavItem;
 
 const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <div>
       {subNav?.length ? (
@@ -23,7 +23,7 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
                     key={single.title}
                     className="opacity-60 transition-all hover:opacity-100"
                   >
-                    <CustomLink href={single.to as string}>
+                    <CustomLink href={`/tools/${single.to}`}>
                       {single.title}
                     </CustomLink>
                   </button>

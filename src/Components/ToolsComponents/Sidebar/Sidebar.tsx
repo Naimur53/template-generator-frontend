@@ -12,8 +12,8 @@ const Sidebar = ({}: Props) => {
       icon: "/icons/react-redux.png",
       title: "React Redux",
       subNav: [
-        { title: "Api slice Folder creator", to: "/reactReduxFolderCreator" },
         { title: "Create Template", to: "/reactReduxTemplateCreator" },
+        { title: "Api slice Folder creator", to: "/reactReduxFolderCreator" },
       ],
     },
     { icon: "/icons/next.png", title: "Next js", to: "/next" },
@@ -21,8 +21,8 @@ const Sidebar = ({}: Props) => {
       icon: "/icons/nextRedux.png",
       title: "Next Redux",
       subNav: [
-        { title: "Api slice Folder creator", to: "/nextReduxFolderCreator" },
         { title: "Create Template", to: "/nextReduxTemplateCreator" },
+        { title: "Api slice Folder creator", to: "/nextReduxFolderCreator" },
       ],
     },
   ];

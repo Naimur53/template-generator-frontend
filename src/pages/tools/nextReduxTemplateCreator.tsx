@@ -1,23 +1,23 @@
-import TechnologyBox from "@/Components/ToolsComponents/TechnologyBox/TechnologyBox";
-import ToolLayout from "@/Layout/ToolsLayout/ToolLayout";
-import { ITechnology } from "@/interface";
-import { useAppDispatch, useAppSelector } from "@/redux/app/store";
-import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
-import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
-import FrameworkBox from "@/Components/ToolsComponents/FrameworkBox/FrameworkBox";
-import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackageBox";
-import HooksBox from "@/Components/ToolsComponents/HooksBox/HooksBox";
-import AuthBox from "@/Components/ToolsComponents/AuthBox/AuthBox";
 import GeneratorButton from "@/Components/Shared/GeneratorButton";
-import { allUrls } from "@/utils/allUrl";
-import { useDebounce } from "@/Hooks/useDebounce";
-import { toast } from "react-toastify";
+import AuthBox from "@/Components/ToolsComponents/AuthBox/AuthBox";
+import FrameworkBox from "@/Components/ToolsComponents/FrameworkBox/FrameworkBox";
+import HooksBox from "@/Components/ToolsComponents/HooksBox/HooksBox";
+import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackageBox";
+import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
+import ReduxApiSliceCreatorBox from "@/Components/ToolsComponents/ReduxApiSliceCreatorBox/ReduxApiSliceCreatorBox";
+import TechnologyBox from "@/Components/ToolsComponents/TechnologyBox/TechnologyBox";
 import useCheckAppName from "@/Hooks/useCheckAppName";
+import { useDebounce } from "@/Hooks/useDebounce";
+import ToolLayout from "@/Layout/ToolsLayout/ToolLayout";
+import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import { addName } from "@/redux/features/basicInfo/basicInfo";
+import { allUrls } from "@/utils/allUrl";
+import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+
 type Props = {};
 
-const ReactTem = (props: Props) => {
+const NextReduxTemplateCreator = (props: Props) => {
   const name = useAppSelector((state) => state.basicInfo.name);
   const dispatch = useAppDispatch();
   const { error } = useCheckAppName();
@@ -27,7 +27,7 @@ const ReactTem = (props: Props) => {
         <div className="flex justify-between items-center mt-2 mb-5">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
-              Create React Template For
+              Create React Redux Template For
             </h1>
             <input
               className={`border-b-2 font-semibold  bg-transparent placeholder:text-white font-robot text-2xl focus:outline-none focus:border-0 ${
@@ -45,7 +45,7 @@ const ReactTem = (props: Props) => {
             />
           </div>
           <div>
-            <GeneratorButton url={allUrls.reactGenURL(name)}></GeneratorButton>
+            <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
           </div>
         </div>
         <div className="grid gap-4 grid-cols-4">
@@ -54,15 +54,18 @@ const ReactTem = (props: Props) => {
           <div className="col-span-2">
             <FrameworkBox></FrameworkBox>
           </div>
-          <div className="col-span-2">
-            <NpmPackageBox></NpmPackageBox>
+          <div className="col-span-2 row-span-2">
+            <ReduxApiSliceCreatorBox></ReduxApiSliceCreatorBox>
           </div>
           <HooksBox></HooksBox>
           <AuthBox></AuthBox>
+          <div className="col-span-2">
+            <NpmPackageBox></NpmPackageBox>
+          </div>
         </div>
       </div>
     </ToolLayout>
   );
 };
 
-export default ReactTem;
+export default NextReduxTemplateCreator;

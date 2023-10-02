@@ -11,9 +11,8 @@ type Props = {
 const GeneratorButton = ({ url }: Props) => {
   const [downloadLink, setDownloadLink] = useState("");
   const [loading, setLoading] = useState(false);
+  const { name, technology } = useAppSelector((state) => state.basicInfo);
   const {
-    name,
-    technology,
     pages,
     cssFrameWork,
     npmPackages,

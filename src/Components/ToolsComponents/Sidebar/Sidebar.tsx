@@ -13,21 +13,25 @@ const Sidebar = ({}: Props) => {
       title: "React Redux",
       subNav: [
         { title: "Create Template", to: "/reactReduxTemplateCreator" },
-        { title: "Api slice Folder creator", to: "/reactReduxFolderCreator" },
+        { title: "Api slice Folder creator", to: "/reduxApiFeatureCreator" },
       ],
     },
-    { icon: "/icons/next.png", title: "Next js", to: "/next" },
+    { icon: "/icons/next.png", title: "Next js", to: "/nextTem" },
     {
       icon: "/icons/nextRedux.png",
       title: "Next Redux",
       subNav: [
         { title: "Create Template", to: "/nextReduxTemplateCreator" },
-        { title: "Api slice Folder creator", to: "/nextReduxFolderCreator" },
+        { title: "Api slice Folder creator", to: "/reduxApiFeatureCreator" },
       ],
     },
   ];
   const navItemsBackend: ISingleNavItem[] = [
-    { icon: "/icons/mongodb.png", title: "Mongoose", to: "/mongoose" },
+    {
+      icon: "/icons/mongodb.png",
+      title: "Mongoose",
+      to: "/mongooseTemplateCreator",
+    },
     { icon: "/icons/prisma.png", title: "Postgres", to: "/postgres" },
   ];
   return (

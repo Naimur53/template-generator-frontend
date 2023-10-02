@@ -17,7 +17,7 @@ const useInput = () => {
     cb: (value: string) => void
   ) => {
     if (preViousData.includes(inputText)) {
-      setError({ isError: true, message: "page already exits" });
+      setError({ isError: true, message: "Already exits" });
       return;
     }
     if (textChecker.testCamelCase(inputText) && inputText.length) {

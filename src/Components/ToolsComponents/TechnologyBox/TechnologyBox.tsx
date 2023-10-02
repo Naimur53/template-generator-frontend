@@ -1,13 +1,14 @@
 import { ITechnology } from "@/interface";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
-import { addTechnology } from "@/redux/features/frontEndGen/frontEndGen";
+import { addTechnology } from "@/redux/features/basicInfo/basicInfo";
+
 import Image from "next/image";
 import React from "react";
 
 type Props = {};
 
 const TechnologyBox: React.FC<Props> = () => {
-  const technology = useAppSelector((state) => state.frontEndGen.technology);
+  const technology = useAppSelector((state) => state.basicInfo.technology);
   const dispatch = useAppDispatch();
 
   const handleTechnologyChange = (givenTech: ITechnology): void => {

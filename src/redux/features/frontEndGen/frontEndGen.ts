@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
 import { ICommonPackage, IFirebaseConfig, ITechnology } from "@/interface";
 
 // Define a type for the slice state
 interface frontEndGenState {
-  name: string | undefined;
-  technology: ITechnology;
   pages: string[];
   cssFrameWork: string | undefined;
   npmPackages: ICommonPackage[];
@@ -17,8 +14,6 @@ interface frontEndGenState {
 
 // Define the initial state using that type
 const initialState: frontEndGenState = {
-  name: undefined,
-  technology: ITechnology.JavaScript,
   pages: ["home"],
   cssFrameWork: undefined,
   npmPackages: [],
@@ -33,12 +28,6 @@ export const frontEndGen = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
-    },
-    addTechnology: (state, action: PayloadAction<ITechnology>) => {
-      state.technology = action.payload;
-    },
     addPage: (state, action: PayloadAction<string>) => {
       state.pages.push(action.payload);
     },
@@ -84,8 +73,6 @@ export const frontEndGen = createSlice({
 });
 
 export const {
-  addName,
-  addTechnology,
   addPage,
   removePage,
   addCssFrameWork,

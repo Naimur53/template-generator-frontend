@@ -17,7 +17,7 @@ import useCheckAppName from "@/Hooks/useCheckAppName";
 import { addName } from "@/redux/features/basicInfo/basicInfo";
 type Props = {};
 
-const ReactTem = (props: Props) => {
+const NextTem = (props: Props) => {
   const name = useAppSelector((state) => state.basicInfo.name);
   const dispatch = useAppDispatch();
   const { error } = useCheckAppName();
@@ -27,7 +27,7 @@ const ReactTem = (props: Props) => {
         <div className="flex justify-between items-center mt-2 mb-5">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
-              Create React Template For
+              Create Next Js Template For
             </h1>
             <input
               className={`border-b-2 font-semibold  bg-transparent placeholder:text-white font-robot text-2xl focus:outline-none focus:border-0 ${
@@ -45,7 +45,7 @@ const ReactTem = (props: Props) => {
             />
           </div>
           <div>
-            <GeneratorButton url={allUrls.reactGenURL(name)}></GeneratorButton>
+            <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
           </div>
         </div>
         <div className="grid gap-4 grid-cols-4">
@@ -65,4 +65,4 @@ const ReactTem = (props: Props) => {
   );
 };
 
-export default ReactTem;
+export default NextTem;

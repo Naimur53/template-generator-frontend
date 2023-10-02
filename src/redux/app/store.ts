@@ -1,9 +1,11 @@
+import basicInfo from "@/redux/features/basicInfo/basicInfo";
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
-import frontEndGen from "../features/frontEndGen/frontEndGen";
+import frontEndGen from "@/redux/features/frontEndGen/frontEndGen";
+import backendGen from "@/redux/features/backEndGen/backEndGen";
 export const store = configureStore({
-  reducer: { frontEndGen: frontEndGen },
+  reducer: { basicInfo, frontEndGen, backendGen },
   devTools: process.env.NODE_ENV !== "production",
   //   middleware: (getDefaultMiddlewares) =>
   //     getDefaultMiddlewares().concat(apiSlice.middleware),

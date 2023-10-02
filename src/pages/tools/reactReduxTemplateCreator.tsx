@@ -6,10 +6,11 @@ import NpmPackageBox from "@/Components/ToolsComponents/NpmPackageBox/NpmPackage
 import PagesBox from "@/Components/ToolsComponents/PagesBox/PagesBox";
 import ReduxApiSliceCreatorBox from "@/Components/ToolsComponents/ReduxApiSliceCreatorBox/ReduxApiSliceCreatorBox";
 import TechnologyBox from "@/Components/ToolsComponents/TechnologyBox/TechnologyBox";
+import useCheckAppName from "@/Hooks/useCheckAppName";
 import { useDebounce } from "@/Hooks/useDebounce";
 import ToolLayout from "@/Layout/ToolsLayout/ToolLayout";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
-import { addName } from "@/redux/features/frontEndGen/frontEndGen";
+import { addName } from "@/redux/features/basicInfo/basicInfo";
 import { allUrls } from "@/utils/allUrl";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -17,23 +18,9 @@ import { toast } from "react-toastify";
 type Props = {};
 
 const ReactReduxTemplateCreator = (props: Props) => {
-  const name = useAppSelector((state) => state.frontEndGen.name);
+  const name = useAppSelector((state) => state.basicInfo.name);
   const dispatch = useAppDispatch();
-  const debouncedValue = useDebounce<string>(name || "demo", 500);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const camelCase = /^[a-z][a-zA-Z]*$/;
-    if (!camelCase.test(debouncedValue)) {
-      setError(true);
-      toast.error(
-        "Please enter project name in pure word no special character, space, or number allowed ",
-        { autoClose: 5000 }
-      );
-    } else {
-      setError(false);
-    }
-  }, [debouncedValue]);
+  const { error } = useCheckAppName();
   return (
     <ToolLayout>
       <div>

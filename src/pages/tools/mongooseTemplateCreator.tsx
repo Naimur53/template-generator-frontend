@@ -1,4 +1,5 @@
 import GeneratorButton from "@/Components/Shared/GeneratorButton";
+import CreateSchemas from "@/Components/ToolsComponents/CreateSchemas/CreateSchemas";
 import ModulesBox from "@/Components/ToolsComponents/ModulesBox/ModulesBox";
 import useCheckAppName from "@/Hooks/useCheckAppName";
 import ToolLayout from "@/Layout/ToolsLayout/ToolLayout";
@@ -39,8 +40,9 @@ const MongooseTemplateCreator = (props: Props) => {
           <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
         </div>
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-[24px]">
         <ModulesBox></ModulesBox>
+        <CreateSchemas></CreateSchemas>
       </div>
     </ToolLayout>
   );

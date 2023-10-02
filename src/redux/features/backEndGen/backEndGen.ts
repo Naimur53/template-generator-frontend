@@ -1,30 +1,14 @@
+import { IModule } from "@/interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define a type for the slice state
-interface IFields {
-  fieldName: string;
-  type: any;
-  length: number;
-  isRequired: boolean;
-  isUnique: boolean;
-}
-interface IModule {
-  name: string;
-  fields: IFields[];
-  shouldAddPaginationAndQuery: boolean;
-  searchTermFields?: string[];
-  exactTermFields?: string[];
-}
+
 interface backEndGenState {
-  name: string | undefined;
   modules: IModule[];
 }
 
 // Define the initial state using that type
-const initialState: backEndGenState = {
-  name: undefined,
-  modules: [],
-};
+const initialState: IModule[] = [];
 
 export const backEndGen = createSlice({
   name: "backEndGen",
@@ -32,7 +16,7 @@ export const backEndGen = createSlice({
   initialState,
   reducers: {
     addNewModuleByName: (state, action: PayloadAction<string>) => {
-      state.modules.push({
+      state.push({
         name: action.payload,
         fields: [],
         shouldAddPaginationAndQuery: true,
@@ -41,9 +25,7 @@ export const backEndGen = createSlice({
       });
     },
     removeModuleByName: (state, action: PayloadAction<string>) => {
-      state.modules = state.modules.filter(
-        (single) => single.name !== action.payload
-      );
+      return state.filter((single) => single.name !== action.payload);
     },
   },
 });

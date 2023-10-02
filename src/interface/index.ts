@@ -23,3 +23,18 @@ export interface ISingleNavItem {
   to?: string;
   subNav?: ISingleNavItem[];
 }
+
+export interface IFields {
+  fieldName: string;
+  type: any;
+  length: number;
+  isRequired: boolean;
+  isUnique: boolean;
+}
+export interface IModule {
+  name: string;
+  fields: IFields[];
+  shouldAddPaginationAndQuery: boolean;
+  searchTermFields?: string[];
+  exactTermFields?: string[];
+}

@@ -14,7 +14,7 @@ type Props = {};
 
 const ModulesBox: React.FC<Props> = () => {
   const pages = useAppSelector((state) =>
-    state.backendGen.modules.map((single) => single.name)
+    state.backendGen.map((single) => single.name)
   );
   const dispatch = useAppDispatch();
 

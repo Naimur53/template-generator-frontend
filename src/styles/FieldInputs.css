@@ -1,0 +1,23 @@
+.fields-input-wrap  input,select {
+    @apply px-4 py-3 bg-primary text-white placeholder:text-gray-50 rounded-xl max-w-[180px] border border-transparent transition-all
+
+}
+.fields-input-wrap> input.input-error,select.input-error {
+    @apply border-error-primary border
+
+}
+.fields-input-wrap> div.input-box >input[type='checkbox'] {
+    @apply w-4 h-4
+}
+.fields-input-wrap> div.input-box >label {
+    @apply text-sm pt-2 text-white
+}
+.fields-input-wrap> div.input-box {
+    @apply flex flex-col items-center justify-center bg-primary px-3 rounded-xl py-2 select-none
+
+}
+.custom-multi-selection  >div>div{
+    @apply !bg-primary rounded-lg
+
+}
+ 

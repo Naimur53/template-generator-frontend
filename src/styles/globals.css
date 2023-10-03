@@ -5,6 +5,11 @@
 
 
 @layer base { 
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
     .font-sans{
         font-family: 'Quattrocento Sans', sans-serif;
     }
@@ -39,6 +44,7 @@
 /* Firefox */
 * {
     scrollbar-width: thin; 
+    
   }
   
   /* Chrome, Edge, and Safari */

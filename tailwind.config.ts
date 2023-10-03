@@ -6,6 +6,7 @@ const config: Config = {
     "./src/Components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Layout/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/react-tailwindcss-select/dist/index.esm.js",
   ],
   theme: {
     extend: {

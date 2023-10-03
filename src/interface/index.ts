@@ -27,9 +27,9 @@ export interface ISingleNavItem {
 export interface IFields {
   fieldName: string;
   type: any;
-  length: number;
-  isRequired: boolean;
-  isUnique: boolean;
+  length?: number;
+  isRequired?: boolean;
+  isUnique?: boolean;
 }
 export interface IModule {
   name: string;

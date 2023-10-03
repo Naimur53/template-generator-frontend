@@ -1,6 +1,6 @@
+const camelCase = /^[a-z][a-zA-Z]*$/;
 const testCamelCase = (text: string): boolean => {
-  const camelCase = /^[a-z][a-zA-Z]*$/;
   return camelCase.test(text);
 };
 
-export const textChecker = { testCamelCase };
+export const textChecker = { camelCase, testCamelCase };

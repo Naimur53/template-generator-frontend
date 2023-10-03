@@ -12,6 +12,7 @@ const GeneratorButton = ({ url }: Props) => {
   const [downloadLink, setDownloadLink] = useState("");
   const [loading, setLoading] = useState(false);
   const { name, technology } = useAppSelector((state) => state.basicInfo);
+  const modules = useAppSelector((state) => state.backendGen);
   const {
     pages,
     cssFrameWork,
@@ -41,23 +42,7 @@ const GeneratorButton = ({ url }: Props) => {
       },
       body: JSON.stringify({
         // Your request data here
-        modules: [
-          {
-            name: "user",
-            fields: [
-              {
-                fieldName: "name",
-                type: "string",
-                isRequired: true,
-                length: 50,
-              },
-              { fieldName: "age", type: "number" },
-            ],
-            shouldAddPaginationAndQuery: true,
-            searchTermFields: ["name"],
-            exactMatchFields: ["age"],
-          },
-        ],
+        modules: modules,
         apis: apis.length ? apis : undefined,
         pages,
         technology,

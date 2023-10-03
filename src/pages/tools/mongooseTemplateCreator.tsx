@@ -37,12 +37,16 @@ const MongooseTemplateCreator = (props: Props) => {
           />
         </div>
         <div>
-          <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
+          <GeneratorButton
+            url={allUrls.mongooseTemGenURL(name)}
+          ></GeneratorButton>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-[24px]">
+      <div className="grid grid-cols-4 gap-[24px]">
         <ModulesBox></ModulesBox>
-        <CreateSchemas></CreateSchemas>
+        <div className="col-span-3">
+          <CreateSchemas></CreateSchemas>
+        </div>
       </div>
     </ToolLayout>
   );

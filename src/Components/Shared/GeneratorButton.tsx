@@ -4,6 +4,8 @@ import { faGear, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { useAppSelector } from "@/redux/app/store";
 import { useDebounce } from "@/Hooks/useDebounce";
+import { getFromLocalStorage } from "@/utils/local-storage";
+import { authKey } from "@/constants/storageKey";
 type Props = {
   url: string;
 };
@@ -39,6 +41,7 @@ const GeneratorButton = ({ url }: Props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: getFromLocalStorage(authKey) || "",
       },
       body: JSON.stringify({
         // Your request data here

@@ -1,3 +1,4 @@
+const rootServerURL = (other: string) => `http://localhost:5001${other}`;
 const reactGenURL = (name?: string) =>
   `http://localhost:5001/react/tem/${name || "demo"}`;
 const nextGenURL = (name?: string) =>
@@ -12,4 +13,5 @@ export const allUrls = {
   reduxFeatureGenURL,
   nextGenURL,
   mongooseTemGenURL,
+  rootServerURL,
 };

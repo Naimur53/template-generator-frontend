@@ -6,28 +6,44 @@ import {
   getAuth,
   User,
   GoogleAuthProvider,
+  getIdToken,
+  FacebookAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import firebaseInit from "@/firebase/firebase.init";
+import { setToLocalStorage } from "@/utils/local-storage";
+import { authKey } from "@/constants/storageKey";
+import { removeUser, setLoading } from "@/redux/features/user/userSlice";
+import { useAppDispatch } from "@/redux/app/store";
 const useFirebase = () => {
   firebaseInit();
   const [user, setUser] = useState<User | null>(null);
   const auth = getAuth();
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        setUser(authUser);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [auth]);
+  const dispatch = useAppDispatch();
 
   const signInWithGoogle = () => {
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        // console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const signInWithFacebook = () => {
+    const facebookProvider = new FacebookAuthProvider();
+    signInWithPopup(auth, facebookProvider)
+      .then((res) => {
+        // console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const signInWithGithub = () => {
+    const githubProvider = new GithubAuthProvider();
+    signInWithPopup(auth, githubProvider)
       .then((res) => {
         console.log(res);
       })
@@ -37,6 +53,8 @@ const useFirebase = () => {
   };
 
   const signOut = () => {
+    dispatch(removeUser());
+    setToLocalStorage(authKey, "");
     return auth.signOut();
   };
 
@@ -44,7 +62,10 @@ const useFirebase = () => {
     user,
     signInWithEmailAndPassword,
     signInWithGoogle,
+    signInWithFacebook,
+    signInWithGithub,
     signOut,
+    auth,
   };
 };
 export default useFirebase;

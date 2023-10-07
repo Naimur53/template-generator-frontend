@@ -147,7 +147,6 @@ const SingleMongooseSchemaCreator = ({
           <input
             type="checkbox"
             className="w-5 h-5"
-            defaultChecked={true}
             checked={shouldAddPaginationAndQuery}
             onChange={(e) =>
               dispatch(

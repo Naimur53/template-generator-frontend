@@ -1,7 +1,7 @@
 import PureTextInputTaker from "@/Components/Shared/PureTextInputTaker";
 import useInput from "@/Hooks/useInput";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
-import {
+import backEndGen, {
   addNewModuleByName,
   removeModuleByName,
 } from "@/redux/features/backEndGen/backEndGen";
@@ -9,13 +9,14 @@ import { removePage } from "@/redux/features/frontEndGen/frontEndGen";
 import { faClose, faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 type Props = {};
 
 const ModulesBox: React.FC<Props> = () => {
-  const pages = useAppSelector((state) =>
-    state.backendGen.map((single) => single.name)
-  );
+  const backendGen = useAppSelector((state) => state.backendGen);
+  const pages = useMemo(() => {
+    return backendGen.map((single) => single.name);
+  }, [backendGen]);
   const dispatch = useAppDispatch();
 
   const [shouldAdd, setShouldAdd] = useState(false);

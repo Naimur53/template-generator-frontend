@@ -7,7 +7,7 @@ import {
 import { textChecker } from "@/utils/textChecker";
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useMemo } from "react";
 import { Resolver, useForm } from "react-hook-form";
 
 type Props = {
@@ -32,17 +32,16 @@ const FieldsInputs = ({
   isDisabled,
   fieldsInfo,
 }: Props) => {
-  const allAddedFieldName = useAppSelector((state) => {
-    const findIndex = state.backendGen.findIndex(
+  const backendGen = useAppSelector((state) => state.backendGen);
+  const allAddedFieldName = useMemo(() => {
+    const findIndex = backendGen.findIndex(
       (single) => single.name === moduleName
     );
     if (findIndex > -1) {
-      return state.backendGen[findIndex].fields.map(
-        (single) => single.fieldName
-      );
+      return backendGen[findIndex].fields.map((single) => single.fieldName);
     }
     return [];
-  });
+  }, [backendGen, moduleName]);
   const {
     register,
     handleSubmit,
@@ -63,6 +62,10 @@ const FieldsInputs = ({
     if (!isDisabled && fieldsInfo?.fieldName) {
       handleDelete(num);
     } else {
+      console.log("hi", {
+        moduleName,
+        fieldName: fieldsInfo?.fieldName as string,
+      });
       dispatch(
         removeField({ moduleName, fieldName: fieldsInfo?.fieldName as string })
       );
@@ -72,23 +75,31 @@ const FieldsInputs = ({
     <div>
       <form onSubmit={onSubmit}>
         <div className="fields-input-wrap flex gap-4 items-center text-black">
-          <input
-            className={isErrorClass("fieldName")}
-            placeholder="*Field name"
-            defaultValue={fieldsInfo?.fieldName}
-            disabled={isDisabled}
-            type="text"
-            {...register("fieldName", {
-              required: "Field name is required",
-              validate: (value) =>
-                !allAddedFieldName.includes(value) || "Field already exits",
-              pattern: {
-                value: textChecker.camelCase,
-                message:
-                  "use camel-case (demo,demoPage) and no special character and number allowed!",
-              },
-            })}
-          />
+          {!isDisabled ? (
+            <input
+              className={isErrorClass("fieldName")}
+              placeholder="*Field name"
+              defaultValue={fieldsInfo?.fieldName}
+              disabled={isDisabled}
+              type="text"
+              {...register("fieldName", {
+                required: "Field name is required",
+                validate: (value) =>
+                  !allAddedFieldName.includes(value) || "Field already exits",
+                pattern: {
+                  value: textChecker.camelCase,
+                  message:
+                    "use camel-case (demo,demoPage) and no special character and number allowed!",
+                },
+              })}
+            />
+          ) : (
+            <input
+              className="w-[140px]  "
+              value={fieldsInfo?.fieldName}
+              type="text"
+            />
+          )}
           {!isDisabled ? (
             <select
               className={isErrorClass("type")}
@@ -107,7 +118,7 @@ const FieldsInputs = ({
           ) : (
             <input
               className="w-[140px] capitalize"
-              defaultValue={fieldsInfo?.type}
+              value={fieldsInfo?.type}
               type="text"
             />
           )}
@@ -157,7 +168,6 @@ const FieldsInputs = ({
             <div className="input-box">
               <input
                 disabled={isDisabled}
-                defaultChecked={fieldsInfo?.isUnique}
                 type="checkbox"
                 {...register("isUnique")}
                 id={`un-${num}`}

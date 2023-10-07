@@ -1,5 +1,6 @@
 import { IFields, IModule } from "@/interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { json } from "stream/consumers";
 
 // Define a type for the slice state
 
@@ -131,7 +132,7 @@ export const backEndGen = createSlice({
       );
       if (findModuleIndex > -1) {
         state[findModuleIndex].fields = state[findModuleIndex].fields.filter(
-          (single) => single.fieldName !== action.payload.fieldName
+          (single) => single.fieldName != action.payload.fieldName
         );
       } else {
         return state;

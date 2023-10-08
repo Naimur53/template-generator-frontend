@@ -56,11 +56,16 @@ export type IContent = {
   content: string;
   filePath?: string;
 };
+export enum IFileType {
+  Folder = "folder",
+  File = "file",
+}
 export interface IFileStructure {
   name: string;
-  type: "folder" | "file";
+  type: IFileType.File | IFileType.Folder;
   isTakeInput?: boolean;
   totalChildCount?: number;
   previousSiblingCount?: number;
   children?: IFileStructure[];
+  language?: "js" | "ts";
 }

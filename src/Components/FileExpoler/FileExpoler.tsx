@@ -1,32 +1,11 @@
-import { IFileStructure } from "@/interface/common";
+import { IFileStructure, IFileType } from "@/interface/common";
 import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface IProps {
   data: IFileStructure;
 }
-const data = {
-  name: "root",
-  type: "folder",
-  children: [
-    {
-      name: "folder1",
-      type: "folder",
-      children: [
-        { name: "file1.js", type: "file" },
-        { name: "file2.js", type: "file" },
-      ],
-    },
-    {
-      name: "folder2",
-      type: "folder",
-      children: [
-        { name: "file3.js", type: "file" },
-        { name: "file4.js", type: "file" },
-      ],
-    },
-  ],
-};
-
 function calculateChildCount(node: IFileStructure) {
   if (!node.children) {
     return 0;
@@ -68,7 +47,7 @@ const FileExplorer: React.FC<IProps> = ({ data }) => {
     let width = index === 0 && level === 0 ? 0 : 20 * level;
     if (item.previousSiblingCount) {
       //   height = item.previousSiblingCount * 2;
-      height = height * item.previousSiblingCount + 25;
+      height = height * item.previousSiblingCount + 50;
     }
     return (
       <div
@@ -76,21 +55,40 @@ const FileExplorer: React.FC<IProps> = ({ data }) => {
         key={item.name}
         style={{ paddingLeft: `${level * 20}px` }}
       >
-        <div className="bg-green-900 relative">
-          <h2 className="px-2 py-1">
+        <div className=" relative">
+          <div className="px-2 py-1 max-w-[140px]  ">
             {/* {item.name} */}
-            <span className="text-white">
-              level_{level}___child_{item.totalChildCount}__in__{index}__pre_
-              {item.previousSiblingCount}
-            </span>
-          </h2>
-          <div
-            style={{
-              width: `${width}px`,
-              height: `${height}px`,
+            <div className="flex items-center gap-2">
+              {item.type === IFileType.Folder ? (
+                <Image
+                  width={26}
+                  height={26}
+                  src="/icons/file-icon.png"
+                  alt="code"
+                ></Image>
+              ) : (
+                <Image
+                  width={20}
+                  height={20}
+                  src={
+                    item.language === "js"
+                      ? "/images/javascript-img.png"
+                      : "/images/typescript-img.png"
+                  }
+                  alt="code"
+                ></Image>
+              )}
+              <span className="text-lg leading-0 mb-0 pb-0">{item.name}</span>
+            </div>
+          </div>
+          <motion.div
+            initial={{ width: 0, height: 0 }}
+            animate={{
+              width: [0, 0, 0, 0, 0, 0, width],
+              height: [0, 0, height],
             }}
             className="absolute border-l-2 border-b-2 bottom-0   -translate-x-full rounded-bl-xl mb-2 pointer-events-none w-0 h-0 transition-all duration-1000"
-          ></div>
+          ></motion.div>
         </div>
         {item.children?.map((child, i) => {
           //   const innerD = child?.children ? calDepth(child, 1) : 0;

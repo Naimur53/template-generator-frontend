@@ -16,6 +16,9 @@
 .sidebar-single-items-wrap:hover::before{
     @apply  w-[100%] opacity-100
 }
+.sidebar-single-items-wrap.active::before{
+    @apply  w-[100%] opacity-100
+}
 
 .singleMultiNavContentWrap{
     grid-template-rows: 0fr;

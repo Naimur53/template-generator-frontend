@@ -32,3 +32,27 @@ export type IUser = {
   createdAt: Date;
   lastLoginAt: Date;
 };
+export type INpmPackage = {
+  name: string;
+  version: string;
+  addToDevDependencies?: boolean;
+};
+export type IWrap = {
+  wrapperNameFirst?: string | undefined;
+  wrapperNameLast?: string | undefined;
+  importFrom: string;
+};
+
+export enum ICssFrameworks {
+  MaterialUi = "Material Ui",
+  Tailwind = "Tailwind",
+  Bootstrap = "Bootstrap",
+  ChakraUi = "Chakra Ui",
+  AntDesign = "Ant Design",
+}
+
+export type IContent = {
+  fileName: string;
+  content: string;
+  filePath?: string;
+};

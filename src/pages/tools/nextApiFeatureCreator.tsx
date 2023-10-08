@@ -7,7 +7,7 @@ import React from "react";
 
 type Props = {};
 
-const ReduxApiFeatureCreator = (props: Props) => {
+const NextApiFeatureCreator = (props: Props) => {
   return (
     <div>
       <ToolLayout>
@@ -15,7 +15,7 @@ const ReduxApiFeatureCreator = (props: Props) => {
           <div className="flex justify-between items-center mt-2 mb-5">
             <div className="flex gap-3">
               <h1 className="text-3xl font-semibold font-robot">
-                Create Redux Features For
+                Create Redux Features
               </h1>
             </div>
             <div>
@@ -37,4 +37,4 @@ const ReduxApiFeatureCreator = (props: Props) => {
   );
 };
 
-export default ReduxApiFeatureCreator;
+export default NextApiFeatureCreator;

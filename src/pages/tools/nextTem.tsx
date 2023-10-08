@@ -45,7 +45,10 @@ const NextTem = (props: Props) => {
             />
           </div>
           <div>
-            <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
+            <GeneratorButton
+              isNextjs={true}
+              url={allUrls.nextGenURL(name)}
+            ></GeneratorButton>
           </div>
         </div>
         <div className="grid gap-4 grid-cols-4">

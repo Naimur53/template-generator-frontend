@@ -23,8 +23,13 @@ const initialState: UserState = {
 export const postUser = createAsyncThunk(
   "user/postUser",
   async (
-    user: Omit<IUser, "_id" | "isBlocked" | "photoURL"> & {
-      photoURL: string | undefined;
+    user: Omit<
+      IUser,
+      "_id" | "isBlocked" | "photoURL" | "displayName" | "email"
+    > & {
+      photoURL: string | undefined | null;
+      email: string | undefined | null;
+      displayName: string | undefined | null;
     }
   ) => {
     const response = await axios.post(allUrls.rootServerURL("/users"), user, {

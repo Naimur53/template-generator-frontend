@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ICssFrameworks } from "@/interface/common";
 
 interface Props {}
 const FrameworkBox: React.FC<Props> = () => {
@@ -13,23 +14,23 @@ const FrameworkBox: React.FC<Props> = () => {
   );
   const frameWorks = [
     {
-      name: "Material Ui",
+      name: ICssFrameworks.MaterialUi,
       icon: "/images/mui.png",
     },
     {
-      name: "Tailwind",
+      name: ICssFrameworks.Tailwind,
       icon: "/images/tailwind.png",
     },
     {
-      name: "Bootstrap",
+      name: ICssFrameworks.Bootstrap,
       icon: "/images/bootstrap.png",
     },
     {
-      name: "Chakra Ui",
+      name: ICssFrameworks.ChakraUi,
       icon: "/images/charka.png",
     },
     {
-      name: "Ant Design",
+      name: ICssFrameworks.AntDesign,
       icon: "/images/ant.png",
     },
   ];

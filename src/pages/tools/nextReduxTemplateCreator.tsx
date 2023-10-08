@@ -27,7 +27,7 @@ const NextReduxTemplateCreator = (props: Props) => {
         <div className="flex justify-between items-center mt-2 mb-5">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
-              Create React Redux Template For
+              Create Next Redux Template For
             </h1>
             <input
               className={`border-b-2 font-semibold  bg-transparent placeholder:text-white font-robot text-2xl focus:outline-none focus:border-0 ${
@@ -45,7 +45,10 @@ const NextReduxTemplateCreator = (props: Props) => {
             />
           </div>
           <div>
-            <GeneratorButton url={allUrls.nextGenURL(name)}></GeneratorButton>
+            <GeneratorButton
+              isNextjs={true}
+              url={allUrls.nextGenURL(name)}
+            ></GeneratorButton>
           </div>
         </div>
         <div className="grid gap-4 grid-cols-4">

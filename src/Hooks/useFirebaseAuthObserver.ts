@@ -21,7 +21,7 @@ const useFirebaseAuthObserver = () => {
           createdAt: string;
           lastLoginAt: string;
         };
-        if (displayName && email) {
+        if (uid) {
           const photoURLValue = photoURL || undefined;
           getIdToken(authUser).then((value) => {
             setToLocalStorage(authKey, value);
@@ -49,7 +49,10 @@ const useFirebaseAuthObserver = () => {
         } else {
           signOut();
           dispatch(setLoading(false));
-          toast.error("Name or email not found try again with another account");
+          toast.error(
+            "Name or email not found try again with another account",
+            { autoClose: 5000 }
+          );
         }
       } else {
         dispatch(setLoading(false));

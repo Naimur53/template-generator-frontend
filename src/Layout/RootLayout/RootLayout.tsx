@@ -16,8 +16,8 @@ const RootLayout: React.FC<Props> = ({ children }) => {
         theme={"dark"}
         pauseOnHover={false}
         hideProgressBar={true}
-        limit={2}
-        autoClose={2000}
+        limit={1}
+        autoClose={3500}
       />
     </div>
   );

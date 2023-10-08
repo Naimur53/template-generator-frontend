@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
@@ -6,11 +6,16 @@ import { useAppSelector } from "@/redux/app/store";
 import { useDebounce } from "@/Hooks/useDebounce";
 import { getFromLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storageKey";
+import generateCssFrameWorkInfo from "@/utils/generateCssFrameWorkInfo";
+import { useRouter } from "next/router";
+import { allUrls } from "@/utils/allUrl";
 type Props = {
   url: string;
+  isNextjs?: boolean;
 };
 
-const GeneratorButton = ({ url }: Props) => {
+const GeneratorButton = ({ url, isNextjs }: Props) => {
+  const router = useRouter();
   const [downloadLink, setDownloadLink] = useState("");
   const [loading, setLoading] = useState(false);
   const { name, technology } = useAppSelector((state) => state.basicInfo);
@@ -25,8 +30,14 @@ const GeneratorButton = ({ url }: Props) => {
     firebaseConfig,
   } = useAppSelector((state) => state.frontEndGen);
   const debouncedValue = useDebounce<string>(name || "demo", 500);
-  const [error, setError] = useState(false);
 
+  // add css framework
+  const { wrapsForCss, npmPackageForCss, othersFileFolderForCss } =
+    useMemo(() => {
+      return generateCssFrameWorkInfo(cssFrameWork, isNextjs);
+    }, [cssFrameWork, isNextjs]);
+  console.log({ wrapsForCss, npmPackageForCss, othersFileFolderForCss });
+  // handle generate button click
   const handleGenerate = () => {
     const camelCase = /^[a-z][a-zA-Z]*$/;
     if (!camelCase.test(debouncedValue)) {
@@ -44,8 +55,7 @@ const GeneratorButton = ({ url }: Props) => {
         authorization: getFromLocalStorage(authKey) || "",
       },
       body: JSON.stringify({
-        // Your request data here
-        modules: modules,
+        // for front end generator
         apis: apis.length ? apis : undefined,
         pages,
         technology,
@@ -54,6 +64,11 @@ const GeneratorButton = ({ url }: Props) => {
           config: firebaseConfig,
         },
         hooks: hooks.length ? hooks : undefined,
+        npmPackages: [...npmPackages, ...npmPackageForCss],
+        wrappers: [...wrapsForCss],
+        othersFileFolder: [...othersFileFolderForCss],
+        // only for backend
+        modules: modules,
       }),
     })
       .then((response: Response) => {

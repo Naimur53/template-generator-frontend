@@ -15,6 +15,7 @@ import { setToLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storageKey";
 import { removeUser, setLoading } from "@/redux/features/user/userSlice";
 import { useAppDispatch } from "@/redux/app/store";
+import handleFirebaseAuthError from "@/helper/Error/firebaseError";
 const useFirebase = () => {
   firebaseInit();
   const [user, setUser] = useState<User | null>(null);
@@ -28,7 +29,7 @@ const useFirebase = () => {
         // console.log(res);
       })
       .catch((error) => {
-        console.log(error);
+        handleFirebaseAuthError(error);
       });
   };
   const signInWithFacebook = () => {
@@ -38,7 +39,7 @@ const useFirebase = () => {
         // console.log(res);
       })
       .catch((error) => {
-        console.log(error);
+        handleFirebaseAuthError(error);
       });
   };
   const signInWithGithub = () => {
@@ -48,7 +49,7 @@ const useFirebase = () => {
         console.log(res);
       })
       .catch((error) => {
-        console.log(error);
+        handleFirebaseAuthError(error);
       });
   };
 

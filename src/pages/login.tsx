@@ -12,11 +12,11 @@ const Login = (props: Props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user?.email) {
+    if (user?.uid) {
       router.push("/tools");
     }
   }, [user, router]);
-  if (user?.email) {
+  if (user?.uid) {
     return (
       <div className="text-center text-lg flex justify-center items-center h-screen">
         <h1>Successfully Logged In</h1>

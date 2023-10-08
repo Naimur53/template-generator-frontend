@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICommonPackage, IFirebaseConfig, ITechnology } from "@/interface";
+import { ICssFrameworks } from "@/interface/common";
 
 // Define a type for the slice state
 interface frontEndGenState {
   pages: string[];
-  cssFrameWork: string | undefined;
+  cssFrameWork: ICssFrameworks | undefined;
   npmPackages: ICommonPackage[];
   hooks: string[];
   auths: string[];
@@ -34,7 +35,10 @@ export const frontEndGen = createSlice({
     removePage: (state, action: PayloadAction<string>) => {
       state.pages = state.pages.filter((single) => single !== action.payload);
     },
-    addCssFrameWork: (state, action: PayloadAction<string | undefined>) => {
+    addCssFrameWork: (
+      state,
+      action: PayloadAction<ICssFrameworks | undefined>
+    ) => {
       state.cssFrameWork = action.payload;
     },
     addNpmPackages: (state, action: PayloadAction<ICommonPackage[]>) => {

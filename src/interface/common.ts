@@ -56,3 +56,11 @@ export type IContent = {
   content: string;
   filePath?: string;
 };
+export interface IFileStructure {
+  name: string;
+  type: "folder" | "file";
+  isTakeInput?: boolean;
+  totalChildCount?: number;
+  previousSiblingCount?: number;
+  children?: IFileStructure[];
+}

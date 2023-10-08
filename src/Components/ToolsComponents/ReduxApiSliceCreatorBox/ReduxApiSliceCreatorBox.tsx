@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import {
   addApis,
   addPage,
+  removeApis,
   removePage,
 } from "@/redux/features/frontEndGen/frontEndGen";
 import { textChecker } from "@/utils/textChecker";
@@ -43,7 +44,7 @@ const ReduxApiSliceCreatorBox: React.FC<Props> = () => {
             <p key={single} className="group">
               {single}
               <button
-                onClick={() => dispatch(removePage(single))}
+                onClick={() => dispatch(removeApis(single))}
                 className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
               >
                 <FontAwesomeIcon className="" icon={faClose} />

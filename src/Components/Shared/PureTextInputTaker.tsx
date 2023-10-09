@@ -34,12 +34,12 @@ const PureTextInputTaker = ({
     <div>
       {shouldAdd && (
         <div>
-          <div className="flex justify-between pr-2 items-center">
+          <div className="flex justify-between pr-2 items-center relative">
             <input
-              className={`bg-transparent border-blue-400 border rounded placeholder:text-white/60 placeholder:text-sm px-2 py-1 transition-all ${
+              className={`bg-transparent w-[120px] border-blue-400 border rounded placeholder:text-white/60 placeholder:text-sm px-2 py-1 transition-all ${
                 error.isError && "error"
               }`}
-              placeholder="Enter uniq camelcase  name"
+              placeholder="Uniq name"
               type="text"
               autoFocus
               onChange={handleInputChange}
@@ -57,7 +57,9 @@ const PureTextInputTaker = ({
             </button>
           </div>
           {error.message && (
-            <p className="text-red-500 text-sm mt-1">*{error.message} </p>
+            <p className="text-red-500 text-sm mt-1 absolute">
+              *{error.message}{" "}
+            </p>
           )}
         </div>
       )}

@@ -20,7 +20,7 @@ const initialState: frontEndGenState = {
   npmPackages: [],
   hooks: [],
   auths: [],
-  apis: [],
+  apis: ["demo"],
   firebaseConfig: undefined,
 };
 

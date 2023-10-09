@@ -1,5 +1,7 @@
+import FileExplorer from "@/Components/FileExpoler/FileExpoler";
 import PureTextInputTaker from "@/Components/Shared/PureTextInputTaker";
 import useInput from "@/Hooks/useInput";
+import { IFileStructure, IFileType } from "@/interface/common";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import backEndGen, {
   addNewModuleByName,
@@ -14,20 +16,148 @@ type Props = {};
 
 const ModulesBox: React.FC<Props> = () => {
   const backendGen = useAppSelector((state) => state.backendGen);
-  const pages = useMemo(() => {
+
+  const modules = useMemo(() => {
     return backendGen.map((single) => single.name);
   }, [backendGen]);
   const dispatch = useAppDispatch();
 
   const [shouldAdd, setShouldAdd] = useState(false);
-
+  const language = "ts";
+  const data: IFileStructure = {
+    name: "src",
+    type: IFileType.Folder,
+    children: [
+      {
+        name: "app",
+        type: IFileType.Folder,
+        children: [
+          {
+            name: "middlewares",
+            type: IFileType.Folder,
+            children: [
+              {
+                name: "auth.ts",
+                type: IFileType.File,
+                language,
+              },
+              {
+                name: "globalErrorHandler.ts",
+                type: IFileType.File,
+                language,
+              },
+              {
+                name: "handleZodError.ts",
+                type: IFileType.File,
+                language,
+              },
+              {
+                name: "validateRequest.ts",
+                type: IFileType.File,
+                language,
+              },
+            ],
+          },
+          {
+            name: "modules",
+            type: IFileType.Folder,
+            children: [
+              ...modules.map(
+                (single): IFileStructure => ({
+                  name: single,
+                  type: IFileType.Folder,
+                  Input: (
+                    <p key={single} className="group ml-0">
+                      {single}
+                      <button
+                        onClick={() => dispatch(removeModuleByName(single))}
+                        className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
+                      >
+                        <FontAwesomeIcon className="" icon={faClose} />
+                      </button>
+                    </p>
+                  ),
+                  children: [
+                    {
+                      name: `${single}.constant.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                    {
+                      name: `${single}.controller.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                    {
+                      name: `${single}.interface.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                    {
+                      name: `${single}.model.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                    {
+                      name: `${single}.route.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                    {
+                      name: `${single}.validation.ts`,
+                      type: IFileType.File,
+                      language,
+                    },
+                  ],
+                })
+              ),
+            ],
+          },
+        ],
+      },
+      {
+        name: "app.ts",
+        type: IFileType.File,
+        language,
+      },
+      {
+        name: "server.ts",
+        type: IFileType.File,
+        language,
+      },
+    ],
+  };
+  if (
+    shouldAdd &&
+    data?.children &&
+    data.children[0]?.children &&
+    data.children[0]?.children[1].children
+  ) {
+    data.children[0].children[1].children = [
+      ...data.children[0]?.children[1].children,
+      {
+        name: "Enter Input",
+        type: IFileType.Folder,
+        Input: (
+          <PureTextInputTaker
+            action={addNewModuleByName}
+            previousData={modules}
+            shouldAdd={shouldAdd}
+            onClose={() => {
+              setShouldAdd(false);
+            }}
+          ></PureTextInputTaker>
+        ),
+      },
+    ];
+  }
   return (
     <div className="commonBox">
       <div className="commonBox-title-wrap">
         <Image
           width={32}
           height={26}
-          src="/icons/file-icon.png"
+          src="/icons/module-gear.jpg"
           alt="code"
         ></Image>
         <h4>Modules</h4>
@@ -39,31 +169,7 @@ const ModulesBox: React.FC<Props> = () => {
         </button>
       </div>
       <div>
-        {/* all pages */}
-        {pages.map((single) => (
-          <div key={single}>
-            <p key={single} className="group">
-              {single}
-              <button
-                onClick={() => dispatch(removeModuleByName(single))}
-                className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
-              >
-                <FontAwesomeIcon className="" icon={faClose} />
-              </button>
-            </p>
-          </div>
-        ))}
-        {/* for new */}
-        {shouldAdd && (
-          <PureTextInputTaker
-            action={addNewModuleByName}
-            previousData={pages}
-            shouldAdd={shouldAdd}
-            onClose={() => {
-              setShouldAdd(false);
-            }}
-          ></PureTextInputTaker>
-        )}
+        <FileExplorer data={data}></FileExplorer>
       </div>
     </div>
   );

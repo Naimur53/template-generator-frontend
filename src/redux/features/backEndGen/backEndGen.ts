@@ -9,7 +9,13 @@ interface backEndGenState {
 }
 
 // Define the initial state using that type
-const initialState: IModule[] = [];
+const initialState: IModule[] = [
+  {
+    name: "demoModules",
+    fields: [],
+    shouldAddPaginationAndQuery: false,
+  },
+];
 
 export const backEndGen = createSlice({
   name: "backEndGen",

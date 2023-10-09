@@ -1,5 +1,7 @@
+import FileExplorer from "@/Components/FileExpoler/FileExpoler";
 import PureTextInputTaker from "@/Components/Shared/PureTextInputTaker";
 import useInput from "@/Hooks/useInput";
+import { IFileStructure, IFileType } from "@/interface/common";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import { addPage, removePage } from "@/redux/features/frontEndGen/frontEndGen";
 import { textChecker } from "@/utils/textChecker";
@@ -11,10 +13,53 @@ type Props = {};
 
 const PagesBox: React.FC<Props> = () => {
   const pages = useAppSelector((state) => state.frontEndGen.pages);
+  const technology = useAppSelector((state) => state.basicInfo.technology);
   const dispatch = useAppDispatch();
 
   const [shouldAdd, setShouldAdd] = useState(false);
-
+  const data: IFileStructure = {
+    name: "Pages",
+    type: IFileType.Folder,
+    children: [
+      ...pages.map(
+        (single): IFileStructure => ({
+          name: single,
+          type: IFileType.File,
+          language: technology,
+          Input: (
+            <p key={single} className="group ml-0">
+              {single}.{technology}
+              <button
+                onClick={() => dispatch(removePage(single))}
+                className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
+              >
+                <FontAwesomeIcon className="" icon={faClose} />
+              </button>
+            </p>
+          ),
+        })
+      ),
+    ],
+  };
+  if (shouldAdd && data?.children && data.children) {
+    data.children = [
+      ...data.children,
+      {
+        name: "Enter Input",
+        type: IFileType.Folder,
+        Input: (
+          <PureTextInputTaker
+            action={addPage}
+            previousData={pages}
+            shouldAdd={shouldAdd}
+            onClose={() => {
+              setShouldAdd(false);
+            }}
+          ></PureTextInputTaker>
+        ),
+      },
+    ];
+  }
   return (
     <div className="commonBox">
       <div className="commonBox-title-wrap">
@@ -33,31 +78,7 @@ const PagesBox: React.FC<Props> = () => {
         </button>
       </div>
       <div>
-        {/* all pages */}
-        {pages.map((single) => (
-          <div key={single}>
-            <p key={single} className="group">
-              {single}
-              <button
-                onClick={() => dispatch(removePage(single))}
-                className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
-              >
-                <FontAwesomeIcon className="" icon={faClose} />
-              </button>
-            </p>
-          </div>
-        ))}
-        {/* for new */}
-        {shouldAdd && (
-          <PureTextInputTaker
-            action={addPage}
-            previousData={pages}
-            shouldAdd={shouldAdd}
-            onClose={() => {
-              setShouldAdd(false);
-            }}
-          ></PureTextInputTaker>
-        )}
+        <FileExplorer data={data}></FileExplorer>
       </div>
     </div>
   );

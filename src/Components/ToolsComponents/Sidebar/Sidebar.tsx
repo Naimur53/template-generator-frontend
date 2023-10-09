@@ -33,9 +33,25 @@ const Sidebar = ({}: Props) => {
     {
       icon: "/icons/mongodb.png",
       title: "Mongoose",
-      to: "/mongooseTemplateCreator",
+      subNav: [
+        {
+          title: "Template And Modules",
+          to: "/mongooseTemplateCreator",
+        },
+        { title: "Only Modules", to: "/mongooseModulesCreator" },
+      ],
     },
-    { icon: "/icons/prisma.png", title: "Postgres", to: "/postgres" },
+    {
+      icon: "/icons/prisma.png",
+      title: "Postgres",
+      subNav: [
+        {
+          title: "Template And Modules",
+          to: "/postgresTemplateCreator",
+        },
+        { title: "Only Modules", to: "/postgresModulesCreator" },
+      ],
+    },
   ];
   return (
     <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bg-primary">

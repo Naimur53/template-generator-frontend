@@ -63,7 +63,7 @@ export enum IFileType {
 export interface IFileStructure {
   name: string;
   type: IFileType.File | IFileType.Folder;
-  isTakeInput?: boolean;
+  Input?: React.ReactNode;
   totalChildCount?: number;
   previousSiblingCount?: number;
   children?: IFileStructure[];

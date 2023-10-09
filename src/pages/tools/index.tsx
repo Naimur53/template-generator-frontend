@@ -72,6 +72,7 @@ const Tools: React.FunctionComponent<IToolsProps> = (props) => {
       {
         name: "folder1",
         type: "folder",
+        Input: <div>Iam input</div>,
         children: [
           { name: "file1.js", type: "file" },
           { name: "file2.js", type: "file" },

@@ -3,56 +3,10 @@ import { ISingleNavItem } from "@/interface";
 import Image from "next/image";
 import React from "react";
 import SingleNavItems from "./SingleNavItems";
+import { navItemsBackend, navItemsFrontEnd } from "@/utils/sideBarInfo";
 type Props = {};
 
 const Sidebar = ({}: Props) => {
-  const navItemsFrontEnd: ISingleNavItem[] = [
-    { icon: "/icons/react.png", title: "React", to: "/reactTem" },
-    {
-      icon: "/icons/react-redux.png",
-      title: "React Redux",
-      subNav: [
-        { title: "Create Template", to: "/reactReduxTemplateCreator" },
-        {
-          title: "Api slice Folder creator",
-          to: "/reactReduxApiFeatureCreator",
-        },
-      ],
-    },
-    { icon: "/icons/next.png", title: "Next js", to: "/nextTem" },
-    {
-      icon: "/icons/nextRedux.png",
-      title: "Next Redux",
-      subNav: [
-        { title: "Create Template", to: "/nextReduxTemplateCreator" },
-        { title: "Api slice Folder creator", to: "/nextApiFeatureCreator" },
-      ],
-    },
-  ];
-  const navItemsBackend: ISingleNavItem[] = [
-    {
-      icon: "/icons/mongodb.png",
-      title: "Mongoose",
-      subNav: [
-        {
-          title: "Template And Modules",
-          to: "/mongooseTemplateCreator",
-        },
-        { title: "Only Modules", to: "/mongooseModulesCreator" },
-      ],
-    },
-    {
-      icon: "/icons/prisma.png",
-      title: "Postgres",
-      subNav: [
-        {
-          title: "Template And Modules",
-          to: "/postgresTemplateCreator",
-        },
-        { title: "Only Modules", to: "/postgresModulesCreator" },
-      ],
-    },
-  ];
   return (
     <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bg-primary">
       <div className="p-[30px]">

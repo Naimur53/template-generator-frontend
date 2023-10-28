@@ -17,10 +17,14 @@
         font-family: 'Quattrocento Sans', sans-serif;
         @apply bg-main-dark text-white
     }
+    .bar-background{
+        @apply bg-white/[0.03] backdrop-blur-lg;
+    }
 }
 @layer components{
+    
     .commonBox{
-        @apply bg-secondary p-4 rounded-2xl min-h-[250px] h-full
+        @apply bg-white/[.05] backdrop-blur-lg p-4 rounded-2xl min-h-[250px] h-full
     }
     .commonBox-title-wrap{
         @apply flex items-center gap-4 mb-5
@@ -44,7 +48,7 @@
 /* Firefox */
 * {
     scrollbar-width: thin; 
-    
+    background-color: transparent;
   }
   
   /* Chrome, Edge, and Safari */

@@ -8,7 +8,7 @@ const NavBar: React.FC = () => {
   const { signOut } = useFirebase();
   return (
     <div className=" pb-[65px]">
-      <div className="fixed z-50 top-0 left-0 right-0 bg-primary py-2 pr-3 flex items-center justify-between">
+      <div className="fixed z-50 top-0 left-0 right-0 bar-background py-2 pr-3 flex items-center justify-between">
         <div className="flex gap-2 items-center">
           <Image width={55} height={200} src="/logo.png" alt="logo" />
           <h2 className="text-3xl font-medium font-robot text-white">TemGen</h2>

@@ -28,8 +28,10 @@ const PostgresModulesCreator = (props: Props) => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-[24px]">
-        <ModulesBox></ModulesBox>
-        <div className=" ">{/* <CreateSchemas></CreateSchemas> */}</div>
+        <ModulesBox moduleOnly={true}></ModulesBox>
+        <div className=" ">
+          <CreateSchemas></CreateSchemas>
+        </div>
       </div>
     </ToolLayout>
   );

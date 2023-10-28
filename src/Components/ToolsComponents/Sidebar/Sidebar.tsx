@@ -8,7 +8,7 @@ type Props = {};
 
 const Sidebar = ({}: Props) => {
   return (
-    <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bg-primary">
+    <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bar-background">
       <div className="p-[30px]">
         <h2 className="sidebar-heading">Front End Generator</h2>
         <div className="sidebar-container">

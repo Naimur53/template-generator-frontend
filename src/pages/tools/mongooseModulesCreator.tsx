@@ -29,7 +29,7 @@ const MongooseModulesCreator = (props: Props) => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-[24px]">
-        <ModulesBox></ModulesBox>
+        <ModulesBox moduleOnly={true}></ModulesBox>
         <div className=" ">
           <CreateSchemas></CreateSchemas>
         </div>

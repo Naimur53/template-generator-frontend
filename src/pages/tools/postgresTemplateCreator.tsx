@@ -43,7 +43,9 @@ const PostgresTemplateCreator = (props: Props) => {
       </div>
       <div className="grid grid-cols-1 gap-[24px]">
         <ModulesBox></ModulesBox>
-        <div className=" ">{/* <CreateSchemas></CreateSchemas> */}</div>
+        <div className=" ">
+          <CreateSchemas></CreateSchemas>
+        </div>
       </div>
     </ToolLayout>
   );

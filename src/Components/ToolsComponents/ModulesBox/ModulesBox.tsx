@@ -12,9 +12,11 @@ import { faClose, faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useState, useMemo } from "react";
-type Props = {};
+type Props = {
+  moduleOnly?: boolean;
+};
 
-const ModulesBox: React.FC<Props> = () => {
+const ModulesBox: React.FC<Props> = ({ moduleOnly }) => {
   const backendGen = useAppSelector((state) => state.backendGen);
 
   const modules = useMemo(() => {
@@ -22,9 +24,65 @@ const ModulesBox: React.FC<Props> = () => {
   }, [backendGen]);
   const dispatch = useAppDispatch();
 
-  const [shouldAdd, setShouldAdd] = useState(false);
+  const [shouldAdd, setShouldAdd] = useState(true);
   const language = "ts";
-  const data: IFileStructure = {
+
+  const onlyModuleData: IFileStructure = {
+    name: "modules",
+    type: IFileType.Folder,
+    children: [
+      ...modules.map(
+        (single): IFileStructure => ({
+          name: single,
+          type: IFileType.Folder,
+          Input: (
+            <p key={single} className="group ml-0">
+              {single}
+              <button
+                onClick={() => dispatch(removeModuleByName(single))}
+                className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
+              >
+                <FontAwesomeIcon className="" icon={faClose} />
+              </button>
+            </p>
+          ),
+          children: [
+            {
+              name: `${single}.constant.ts`,
+              type: IFileType.File,
+              language,
+            },
+            {
+              name: `${single}.controller.ts`,
+              type: IFileType.File,
+              language,
+            },
+            {
+              name: `${single}.interface.ts`,
+              type: IFileType.File,
+              language,
+            },
+            {
+              name: `${single}.model.ts`,
+              type: IFileType.File,
+              language,
+            },
+            {
+              name: `${single}.route.ts`,
+              type: IFileType.File,
+              language,
+            },
+            {
+              name: `${single}.validation.ts`,
+              type: IFileType.File,
+              language,
+            },
+          ],
+        })
+      ),
+    ],
+  };
+  const fullData: IFileStructure = {
     name: "src",
     type: IFileType.Folder,
     children: [
@@ -58,61 +116,7 @@ const ModulesBox: React.FC<Props> = () => {
               },
             ],
           },
-          {
-            name: "modules",
-            type: IFileType.Folder,
-            children: [
-              ...modules.map(
-                (single): IFileStructure => ({
-                  name: single,
-                  type: IFileType.Folder,
-                  Input: (
-                    <p key={single} className="group ml-0">
-                      {single}
-                      <button
-                        onClick={() => dispatch(removeModuleByName(single))}
-                        className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
-                      >
-                        <FontAwesomeIcon className="" icon={faClose} />
-                      </button>
-                    </p>
-                  ),
-                  children: [
-                    {
-                      name: `${single}.constant.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                    {
-                      name: `${single}.controller.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                    {
-                      name: `${single}.interface.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                    {
-                      name: `${single}.model.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                    {
-                      name: `${single}.route.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                    {
-                      name: `${single}.validation.ts`,
-                      type: IFileType.File,
-                      language,
-                    },
-                  ],
-                })
-              ),
-            ],
-          },
+          { ...onlyModuleData },
         ],
       },
       {
@@ -127,7 +131,31 @@ const ModulesBox: React.FC<Props> = () => {
       },
     ],
   };
-  if (
+  const inputNewData = {
+    name: "Enter Input",
+    type: IFileType.Folder,
+    Input: (
+      <PureTextInputTaker
+        action={addNewModuleByName}
+        previousData={modules}
+        shouldAdd={shouldAdd}
+        onClose={() => {
+          setShouldAdd(false);
+        }}
+      ></PureTextInputTaker>
+    ),
+  };
+  const data = moduleOnly ? onlyModuleData : fullData;
+  if (moduleOnly) {
+    if (shouldAdd && data.children) {
+      data.children = [
+        ...data.children,
+        {
+          ...inputNewData,
+        },
+      ];
+    }
+  } else if (
     shouldAdd &&
     data?.children &&
     data.children[0]?.children &&
@@ -135,20 +163,7 @@ const ModulesBox: React.FC<Props> = () => {
   ) {
     data.children[0].children[1].children = [
       ...data.children[0]?.children[1].children,
-      {
-        name: "Enter Input",
-        type: IFileType.Folder,
-        Input: (
-          <PureTextInputTaker
-            action={addNewModuleByName}
-            previousData={modules}
-            shouldAdd={shouldAdd}
-            onClose={() => {
-              setShouldAdd(false);
-            }}
-          ></PureTextInputTaker>
-        ),
-      },
+      inputNewData,
     ];
   }
   return (

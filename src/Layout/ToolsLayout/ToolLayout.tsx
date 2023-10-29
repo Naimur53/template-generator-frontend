@@ -2,7 +2,7 @@ import NavBar from "@/Components/Shared/NavBar";
 import Sidebar from "@/Components/ToolsComponents/Sidebar/Sidebar";
 import React, { ReactNode } from "react";
 import PrivateLayout from "../PrivateLayout/PrivateLayout";
-import Background from "@/Components/ToolsComponents/Background/Background";
+import Background from "@/Components/ToolsComponents/Background/SingleBackground";
 type LayoutProps = {
   children: ReactNode;
 };
@@ -18,7 +18,6 @@ const ToolLayout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
       </div>
-      <Background></Background>
     </PrivateLayout>
   );
 };

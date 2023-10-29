@@ -11,10 +11,9 @@ import HooksBox from "@/Components/ToolsComponents/HooksBox/HooksBox";
 import AuthBox from "@/Components/ToolsComponents/AuthBox/AuthBox";
 import GeneratorButton from "@/Components/Shared/GeneratorButton";
 import { allUrls } from "@/utils/allUrl";
-import { useDebounce } from "@/Hooks/useDebounce";
-import { toast } from "react-toastify";
 import useCheckAppName from "@/Hooks/useCheckAppName";
 import { addName } from "@/redux/features/basicInfo/basicInfo";
+import { motion } from "framer-motion";
 type Props = {};
 
 const ReactTem = (props: Props) => {

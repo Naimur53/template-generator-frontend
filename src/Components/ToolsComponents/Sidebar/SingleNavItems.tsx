@@ -7,34 +7,44 @@ import React, { useState } from "react";
 type Props = {} & ISingleNavItem;
 
 const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
-  const [open, setOpen] = useState(false);
   const router = useRouter();
-  const isActive = router.pathname === `/tools${to}`;
-
   const isNestedOneActive = (subNav: ISingleNavItem[]) => {
     const routes = subNav.map((single) => `/tools${single.to}`);
-    console.log({ routes, r: router.pathname });
     return routes.includes(router.pathname);
   };
+  const [open, setOpen] = useState(isNestedOneActive(subNav || []));
+  const isActive = (url?: string) => router.pathname === `/tools${url}`;
+
   return (
     <div>
       {subNav?.length ? (
-        <div onClick={() => setOpen((pre) => !pre)}>
+        <div>
           <div
             className={` sidebar-single-items-wrap  flex-wrap !gap-0 ${
               isNestedOneActive(subNav) ? "active" : ""
             }`}
           >
-            {icon && <Image width={30} height={30} src={icon} alt={title} />}
-            <span className="font- ml-[17px] text-lg">{title}</span>
             <div
+              className="flex items-center cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpen((pre) => !pre);
+              }}
+            >
+              {icon && <Image width={30} height={30} src={icon} alt={title} />}
+              <span className="font- ml-[17px] text-lg">{title}</span>
+            </div>
+            <div
+              onClick={(e) => e.stopPropagation()}
               className={`singleMultiNavContentWrap  hidden ${open && "open"}`}
             >
               <div className={` min-h-[0px] ml-6`}>
                 {subNav.map((single) => (
                   <button
                     key={single.title}
-                    className="opacity-60 transition-all hover:opacity-100"
+                    className={`opacity-60 transition-all hover:opacity-100 ${
+                      isActive(single.to) ? "!text-white   !opacity-100" : ""
+                    }`}
                   >
                     <CustomLink href={`/tools/${single.to}`}>
                       {single.title}
@@ -48,7 +58,9 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
       ) : (
         <CustomLink href={`/tools/${to}`} key={title}>
           <div
-            className={`sidebar-single-items-wrap ${isActive ? "active" : ""}`}
+            className={`sidebar-single-items-wrap ${
+              isActive(to) ? "active" : ""
+            }`}
           >
             {icon && <Image width={30} height={30} src={icon} alt={title} />}
             <span className="font-semibold text-lg">{title}</span>

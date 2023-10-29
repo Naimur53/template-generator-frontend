@@ -1,5 +1,7 @@
+import Background from "@/Components/ToolsComponents/Background/SingleBackground";
 import useFirebaseAuthObserver from "@/Hooks/useFirebaseAuthObserver";
 import React, { ReactNode } from "react";
+import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 type Props = {
@@ -9,8 +11,8 @@ type Props = {
 const RootLayout: React.FC<Props> = ({ children }) => {
   const observer = useFirebaseAuthObserver();
   return (
-    <div>
-      {children}
+    <motion.div>
+      <div className="relative z-50">{children}</div>
       <ToastContainer
         position="bottom-center"
         theme={"dark"}
@@ -19,7 +21,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
         limit={1}
         autoClose={3500}
       />
-    </div>
+    </motion.div>
   );
 };
 

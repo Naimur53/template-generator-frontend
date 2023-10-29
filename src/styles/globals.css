@@ -65,3 +65,26 @@
     background-color: rgba(255, 255, 255, 0.835);
     border-radius: 14px; 
   }
+
+  .woocommerce-product-gallery .flex-viewport {
+    position: relative;
+}
+ul.flex-direction-nav {
+    position: relative;
+    z-index: 2;
+    top: 75%;
+    left: 0; 
+    margin: 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    visibility: visible;
+    pointer-events: none;
+    justify-content: center;
+}
+.gallery .gallery-item, li.flex-nav-prev {
+    float: none!important;
+}
+li.flex-nav-next {
+    float: none!important;
+}

@@ -24,7 +24,7 @@ const Login = (props: Props) => {
     );
   }
   return (
-    <div className="relative py-16 bg-gradient-to-br ">
+    <div className="relative py-16 bg-gradient-to-br z-40">
       <div className="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
         <div className="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
           <div className="rounded-xl bg-secondary shadow-xl">

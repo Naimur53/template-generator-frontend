@@ -1,3 +1,5 @@
+import { AnimationProps } from "framer-motion";
+
 export interface IMeta {
   limit: number;
   page: number;
@@ -69,3 +71,13 @@ export interface IFileStructure {
   children?: IFileStructure[];
   language?: "js" | "ts";
 }
+
+export type TSingleBackground = {
+  initial: AnimationProps["initial"];
+  animate: AnimationProps["animate"];
+  exit?: AnimationProps["exit"];
+  className?: string;
+  imgUrl: string;
+  imgClassName?: string;
+  activeUrls: string[];
+};

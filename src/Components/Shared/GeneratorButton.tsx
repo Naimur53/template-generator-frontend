@@ -36,7 +36,6 @@ const GeneratorButton = ({ url, isNextjs }: Props) => {
     useMemo(() => {
       return generateCssFrameWorkInfo(cssFrameWork, isNextjs);
     }, [cssFrameWork, isNextjs]);
-  console.log({ wrapsForCss, npmPackageForCss, othersFileFolderForCss });
   // handle generate button click
   const handleGenerate = () => {
     const camelCase = /^[a-z][a-zA-Z]*$/;
@@ -112,7 +111,6 @@ const GeneratorButton = ({ url, isNextjs }: Props) => {
         setLoading(false);
       });
   };
-  console.log(downloadLink);
   return (
     <div
       className={`flex transition-all gap-2 ${

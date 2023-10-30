@@ -29,7 +29,7 @@ const useFirebaseAuthObserver = () => {
               postUser({
                 uid,
                 displayName,
-                email,
+                email: email || undefined,
                 emailVerified,
                 photoURL: photoURLValue,
                 createdAt: new Date(Number(createdAt)),
@@ -39,10 +39,12 @@ const useFirebaseAuthObserver = () => {
               .then((res) => {
                 console.log(res);
                 if (res.type === "user/postUser/rejected") {
+                  toast.error("Login unsuccessfully!");
                   signOut();
                 }
               })
               .catch((res) => {
+                toast.error("Login unsuccessfully!");
                 signOut();
               });
           });

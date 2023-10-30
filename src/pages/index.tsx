@@ -28,9 +28,10 @@ export default function Home() {
             </Link>
           </div>
           <div>
+            {/* <img src="/images/homeBannerImg.svg" className="w-full" alt="" /> */}
             <img
-              src="/images/people-and-technology-removebg-preview.png"
-              className="w-full"
+              src="/images/blue-blueflame.gif"
+              className="w-full -mt-60"
               alt=""
             />
           </div>

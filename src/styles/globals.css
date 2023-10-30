@@ -65,26 +65,51 @@
     background-color: rgba(255, 255, 255, 0.835);
     border-radius: 14px; 
   }
-
-  .woocommerce-product-gallery .flex-viewport {
+  .home-banner-button{ 
+    display: inline-block; 
+    padding: 10px 24px;   
+    text-decoration: none;
+    margin-top: 27px;
+    color: #fff; 
+    transition: all .3s;
     position: relative;
+    z-index: 100;
 }
-ul.flex-direction-nav {
-    position: relative;
-    z-index: 2;
-    top: 75%;
-    left: 0; 
-    margin: 0 0 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    visibility: visible;
-    pointer-events: none;
-    justify-content: center;
+/* adding button style with before after  */
+.home-banner-button::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0; 
+    width: 50%;
+    height: 100%; 
+    z-index: -1;
+    transform: translateY(50%) skew(30deg) scaleY(.7);
+    transition:transform .3s;
+    box-shadow: -8px 2px 5px rgb(0 0 0 / 20%);
+    @apply bg-cyan-500 ;
 }
-.gallery .gallery-item, li.flex-nav-prev {
-    float: none!important;
+.home-banner-button::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0; 
+    width: 50%;
+    height: 100%; 
+    z-index: -1;
+    transform: translateY(-50%) skew(30deg) scaleY(.7);
+    transition:transform .3s;
+    box-shadow: 8px 2px 5px rgb(0 0 0 / 20%);
+    @apply bg-cyan-500 ;
 }
-li.flex-nav-next {
-    float: none!important;
+/* button hover  */
+.home-banner-button:hover::before{
+    transform: translateY(0%);  
+    box-shadow: none;
 }
+.home-banner-button:hover::after{
+    transform: translateY(0%); 
+    box-shadow: none; 
+} 

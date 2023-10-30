@@ -131,7 +131,6 @@ const Background = (props: Props) => {
     minValue,
     maxValue
   );
-  console.log(smoothedScrollY / 1000);
   return (
     <>
       <motion.div

@@ -28,6 +28,12 @@ const config: Config = {
         robot: ["Quantico", "sans-serif"],
       },
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "30px",
+      },
+    },
   },
   plugins: [],
 };

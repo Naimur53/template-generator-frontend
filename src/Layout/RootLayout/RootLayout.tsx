@@ -12,7 +12,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
   const observer = useFirebaseAuthObserver();
   return (
     <motion.div>
-      <div className="relative z-50">{children}</div>
+      <motion.div className="relative z-50">{children}</motion.div>
       <ToastContainer
         position="bottom-center"
         theme={"dark"}

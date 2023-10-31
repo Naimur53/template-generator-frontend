@@ -21,7 +21,7 @@ const Login = (props: Props) => {
   if (user?.uid) {
     return (
       <div className="text-center text-lg flex justify-center items-center h-screen">
-        <h1>Successfully Logged In</h1>
+        {/* <h1>Successfully Logged In</h1> */}
       </div>
     );
   }

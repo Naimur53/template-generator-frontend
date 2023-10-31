@@ -35,7 +35,7 @@ function SingleBackground({
         width={500}
         height={500}
         src={imgUrl}
-        className={`w-[1000px] ${imgClassName}`}
+        className={`w-[1000px] opacity-40 ${imgClassName}`}
         alt="react icon"
       />
     </motion.div>

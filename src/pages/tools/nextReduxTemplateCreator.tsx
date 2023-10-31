@@ -24,13 +24,13 @@ const NextReduxTemplateCreator = (props: Props) => {
   return (
     <ToolLayout>
       <div>
-        <div className="flex justify-between items-center mt-2 mb-5">
+        <div className="page-upper-content-wrap">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
               Create Next Redux Template For
             </h1>
             <input
-              className={`border-b-2 font-semibold  bg-transparent placeholder:text-white font-robot text-2xl focus:outline-none focus:border-0 ${
+              className={`border-b-2 font-semibold max-w-[220px] bg-transparent placeholder:text-white font-robot text-2xl focus:outline-none focus:border-0 ${
                 name?.length
                   ? error
                     ? "border-error-primary"
@@ -51,7 +51,7 @@ const NextReduxTemplateCreator = (props: Props) => {
             ></GeneratorButton>
           </div>
         </div>
-        <div className="grid gap-4 grid-cols-4">
+        <div className="grid  gap-4 grid-cols-1 xl:grid-cols-4">
           <TechnologyBox></TechnologyBox>
           <PagesBox></PagesBox>
           <div className="col-span-2">

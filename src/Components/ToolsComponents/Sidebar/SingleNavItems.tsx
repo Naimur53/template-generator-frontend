@@ -1,6 +1,7 @@
 import CustomLink from "@/Components/Shared/CustomLink";
 import { ISingleNavItem } from "@/interface";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
@@ -20,19 +21,34 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
       {subNav?.length ? (
         <div>
           <div
-            className={` sidebar-single-items-wrap  flex-wrap !gap-0 ${
+            onClick={() => {
+              setOpen(true);
+            }}
+            className={` sidebar-single-items-wrap select-none  flex-wrap !gap-0 ${
               isNestedOneActive(subNav) ? "active" : ""
             }`}
           >
             <div
-              className="flex items-center cursor-pointer"
+              className="flex items-center cursor-pointer w-full"
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen((pre) => !pre);
               }}
             >
               {icon && <Image width={30} height={30} src={icon} alt={title} />}
-              <span className="font- ml-[17px] text-lg">{title}</span>
+              <span className="font- ml-[17px] text-lg whitespace-nowrap">
+                {title}
+              </span>
+              <div className="w-full flex justify-end">
+                <div className="ml-auto">
+                  <Image
+                    src={"/icons/down.svg"}
+                    width={15}
+                    height={10}
+                    alt="down"
+                  ></Image>
+                </div>
+              </div>
             </div>
             <div
               onClick={(e) => e.stopPropagation()}
@@ -46,9 +62,9 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
                       isActive(single.to) ? "!text-white   !opacity-100" : ""
                     }`}
                   >
-                    <CustomLink href={`/tools/${single.to}`}>
+                    <Link scroll={true} href={`/tools/${single.to}`}>
                       {single.title}
-                    </CustomLink>
+                    </Link>
                   </button>
                 ))}
               </div>
@@ -56,7 +72,7 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
           </div>
         </div>
       ) : (
-        <CustomLink href={`/tools/${to}`} key={title}>
+        <Link scroll={true} href={`/tools/${to}`} key={title}>
           <div
             className={`sidebar-single-items-wrap ${
               isActive(to) ? "active" : ""
@@ -65,7 +81,7 @@ const SingleNavItems = ({ icon, title, to, subNav }: Props) => {
             {icon && <Image width={30} height={30} src={icon} alt={title} />}
             <span className="font-semibold text-lg">{title}</span>
           </div>
-        </CustomLink>
+        </Link>
       )}
     </div>
   );

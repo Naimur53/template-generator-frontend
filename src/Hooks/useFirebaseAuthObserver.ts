@@ -3,13 +3,25 @@ import useFirebase from "./useFirebase";
 import { useAppDispatch } from "@/redux/app/store";
 import { postUser, setLoading } from "@/redux/features/user/userSlice";
 import { toast } from "react-toastify";
-import { fetchSignInMethodsForEmail, getIdToken } from "firebase/auth";
+import { User, fetchSignInMethodsForEmail, getIdToken } from "firebase/auth";
 import { setToLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storageKey";
 const useFirebaseAuthObserver = () => {
   const { auth, signOut } = useFirebase();
   const dispatch = useAppDispatch();
-
+  const getTokensAfterSomeTime = (authUser: User | null) => {
+    setInterval(() => {
+      if (authUser) {
+        getIdToken(authUser)
+          .then((token) => {
+            setToLocalStorage(authKey, token);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    }, 1000 * 60 * 4);
+  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser?.uid) {
@@ -22,7 +34,6 @@ const useFirebaseAuthObserver = () => {
           lastLoginAt: string;
         };
         if (uid) {
-          const photoURLValue = photoURL || undefined;
           getIdToken(authUser).then((value) => {
             setToLocalStorage(authKey, value);
             dispatch(
@@ -31,17 +42,18 @@ const useFirebaseAuthObserver = () => {
                 displayName,
                 email: email || undefined,
                 emailVerified,
-                photoURL: photoURLValue,
+                photoURL: photoURL || undefined,
                 createdAt: new Date(Number(createdAt)),
                 lastLoginAt: new Date(Number(lastLoginAt)),
               })
             )
               .then((res) => {
-                console.log(res);
                 if (res.type === "user/postUser/rejected") {
                   toast.error("Login unsuccessfully!");
                   signOut();
+                  return;
                 }
+                getTokensAfterSomeTime(authUser);
               })
               .catch((res) => {
                 toast.error("Login unsuccessfully!");

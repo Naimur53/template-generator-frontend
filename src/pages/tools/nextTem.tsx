@@ -24,7 +24,7 @@ const NextTem = (props: Props) => {
   return (
     <ToolLayout>
       <div>
-        <div className="flex justify-between items-center mt-2 mb-5">
+        <div className="page-upper-content-wrap">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
               Create Next Js Template For
@@ -51,7 +51,7 @@ const NextTem = (props: Props) => {
             ></GeneratorButton>
           </div>
         </div>
-        <div className="grid gap-4 grid-cols-4">
+        <div className="grid gap-4  grid-cols-1 xl:grid-cols-4">
           <TechnologyBox></TechnologyBox>
           <PagesBox></PagesBox>
           <div className="col-span-2">

@@ -42,13 +42,6 @@ const NpmPackageBoxPopupContent = (props: Props) => {
         <h2 className="text-xl font-robot font-semibold">
           Select Npm Packages
         </h2>
-        <button
-          disabled={!Boolean(newSelectedPackages.length)}
-          className="font-bold text-lg font-robot rounded-lg bg-blue-500 px-3 py-1 disabled:grayscale grayscale-0 transition-all"
-          onClick={handleAddToStore}
-        >
-          Add
-        </button>
       </div>
       <div className="h-[400px] overflow-y-scroll pr-2 ">
         {unSelectedNpmPackages.length ? (
@@ -79,6 +72,15 @@ const NpmPackageBoxPopupContent = (props: Props) => {
             </p>
           </div>
         )}
+      </div>
+      <div className="flex justify-end">
+        <button
+          disabled={!Boolean(newSelectedPackages.length)}
+          className="font-bold text-lg font-robot rounded-lg bg-blue-500 px-3 py-1 disabled:grayscale grayscale-0 transition-all"
+          onClick={handleAddToStore}
+        >
+          Add
+        </button>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ const NavBar: React.FC = () => {
               src={user.photoURL || "/images/default_profile.png"}
               alt="user"
             />
-            <div className="absolute bg-secondary/[.9] backdrop-blur-3xl  px-2 py-4 shadow-lg rounded-lg group-hover:opacity-100 group-hover:visible invisible transition-all opacity-0  right-0  w-[200px] mt-3">
+            <div className="absolute bg-[#080821] backdrop-blur-sm  px-2 py-4 shadow-lg rounded-lg group-hover:opacity-100 group-hover:visible invisible transition-all opacity-0  right-0  w-[200px] mt-3">
               <div>
                 <p className="font-bold text-xl">{user.displayName}</p>
               </div>

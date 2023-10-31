@@ -16,7 +16,7 @@ const MongooseTemplateCreator = (props: Props) => {
   const { error } = useCheckAppName();
   return (
     <ToolLayout>
-      <div className="flex justify-between items-center mt-2 mb-5">
+      <div className="page-upper-content-wrap">
         <div className="flex gap-3">
           <h1 className="text-3xl font-semibold font-robot">
             Create Mongoose Template For

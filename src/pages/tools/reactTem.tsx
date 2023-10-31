@@ -23,7 +23,7 @@ const ReactTem = (props: Props) => {
   return (
     <ToolLayout>
       <div>
-        <div className="flex justify-between items-center mt-2 mb-5">
+        <div className="page-upper-content-wrap">
           <div className="flex gap-3">
             <h1 className="text-3xl font-semibold font-robot">
               Create React Template For
@@ -37,7 +37,7 @@ const ReactTem = (props: Props) => {
                   : "border-error-primary"
               }`}
               value={name}
-              autoFocus
+              autoFocus={true}
               onChange={(e) => dispatch(addName(e.target.value))}
               type="text"
               placeholder="Enter Project name"
@@ -47,7 +47,7 @@ const ReactTem = (props: Props) => {
             <GeneratorButton url={allUrls.reactGenURL(name)}></GeneratorButton>
           </div>
         </div>
-        <div className="grid gap-4 grid-cols-4">
+        <div className="grid gap-4  grid-cols-1 xl:grid-cols-4">
           <TechnologyBox></TechnologyBox>
           <PagesBox></PagesBox>
           <div className="col-span-2">

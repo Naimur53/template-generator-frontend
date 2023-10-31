@@ -12,14 +12,15 @@ import { AnimatePresence } from "framer-motion";
 import Background from "@/Components/ToolsComponents/Background/Background";
 import { TSingleBackground } from "@/interface/common";
 import UserLoading from "@/Components/LoadingCom/UserLoading";
-export default function App({ Component, pageProps, router }: AppProps) {
-  console.log(router.route);
+import NextNProgress from "nextjs-progressbar";
 
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
         <RootLayout>
-          <Component {...pageProps} key={router.route} />
+          <Component {...pageProps} />
+          <NextNProgress />
           <div className="fixed overflow-hidden inset-0">
             <Background></Background>
           </div>

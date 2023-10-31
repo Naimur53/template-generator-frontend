@@ -59,15 +59,6 @@ const AuthBoxModal = (props: Props) => {
         <h2 className="text-2xl font-robot">
           Enter your Firebase Configuration
         </h2>
-        <div>
-          <button
-            disabled={!Boolean(parsedData)}
-            onClick={handleAddConfig}
-            className="generator-button disabled:grayscale grayscale-0 transition-all"
-          >
-            Add
-          </button>
-        </div>
       </div>
       <p className="text-green-400 my-2">{`Don't worry we won't save this information`}</p>
       <div>
@@ -87,6 +78,15 @@ const AuthBoxModal = (props: Props) => {
         ></textarea>
 
         {error && <p className="text-error-primary">{error}</p>}
+      </div>
+      <div className="flex justify-end">
+        <button
+          disabled={!Boolean(parsedData)}
+          onClick={handleAddConfig}
+          className="generator-button disabled:grayscale grayscale-0 transition-all"
+        >
+          Save
+        </button>
       </div>
     </div>
   );

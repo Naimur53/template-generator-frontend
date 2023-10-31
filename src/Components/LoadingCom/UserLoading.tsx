@@ -16,7 +16,7 @@ const UserLoading = (props: Props) => {
           animate={animate}
           exit={init}
           transition={{ duration: 0.3, ease: "linear" }}
-          className="fixed inset-0 flex justify-center items-center z-50 backdrop-blur-sm"
+          className="fixed inset-0 flex justify-center items-center z-[9999999] backdrop-blur-sm"
         >
           <div className="backdrop">
             <div className="loader">

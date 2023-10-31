@@ -29,7 +29,9 @@ export default function Home() {
           </div>
           <div>
             {/* <img src="/images/homeBannerImg.svg" className="w-full" alt="" /> */}
-            <img
+            <Image
+              width={500}
+              height={500}
               src="/images/blue-blueflame.gif"
               className="w-full -mt-60"
               alt=""

@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Head from "next/head";
 type Props = {
   children: ReactNode;
 };
@@ -12,6 +13,9 @@ const RootLayout: React.FC<Props> = ({ children }) => {
   const observer = useFirebaseAuthObserver();
   return (
     <motion.div>
+      <Head>
+        <title>Template Generator</title>
+      </Head>
       <motion.div className="relative z-50">{children}</motion.div>
       <ToastContainer
         position="bottom-center"

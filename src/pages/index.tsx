@@ -27,13 +27,13 @@ export default function Home() {
               </button>
             </Link>
           </div>
-          <div>
+          <div className="flex justify-center items-center mt-[200px]">
             {/* <img src="/images/homeBannerImg.svg" className="w-full" alt="" /> */}
             <Image
               width={500}
               height={500}
-              src="/images/blue-blueflame.gif"
-              className="w-full -mt-60"
+              src="/gif/banner.gif"
+              className="w-full -mt-60 rounded-full"
               alt=""
             />
           </div>

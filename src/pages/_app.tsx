@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <RootLayout>
           <Component {...pageProps} />
           <NextNProgress />
-          <div className="fixed overflow-hidden inset-0">
+          <div className="fixed overflow-hidden inset-0 select-none">
             <Background></Background>
           </div>
           <UserLoading></UserLoading>

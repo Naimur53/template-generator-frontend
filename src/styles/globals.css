@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,9 +14,8 @@
     .font-sans{
         font-family: 'Quattrocento Sans', sans-serif;
     }
-    body{
-        font-family: 'Quattrocento Sans', sans-serif;
-        @apply bg-main-dark text-white
+    body{ 
+        @apply bg-main-dark text-white font-mon
     }
     .bar-background{
         @apply bg-white/[0.03] backdrop-blur-lg;
@@ -77,9 +77,10 @@
     transition: all .3s;
     position: relative;
     z-index: 100;
+    @apply bg-cyan-500
 }
 /* adding button style with before after  */
-.home-banner-button::before{
+/* .home-banner-button::before{
     content: "";
     display: inline-block;
     position: absolute;
@@ -108,14 +109,14 @@
     @apply bg-cyan-500 ;
 }
 /* button hover  */
-.home-banner-button:hover::before{
+/* .home-banner-button:hover::before{
     transform: translateY(0%);  
-    box-shadow: none;
+    box-shadow: none; 
 }
 .home-banner-button:hover::after{
     transform: translateY(0%); 
-    box-shadow: none; 
-} 
+    box-shadow: none;  
+}  */
 
 
 .backdrop {

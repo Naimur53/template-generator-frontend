@@ -9,9 +9,9 @@ const NavBar: React.FC = () => {
   const { signOut } = useFirebase();
   return (
     <div className=" pb-[65px]">
-      <div className="fixed z-50 top-0 left-0 right-0 bar-background py-2 pr-3 flex items-center justify-between">
+      <div className="fixed z-50 top-0 left-0 right-0 max-h-[65px] bar-background py-2 pr-3 flex items-center justify-between">
         <Link href={"/"}>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center ">
             <Image width={55} height={200} src="/images/logo.svg" alt="logo" />
             <h2 className="text-3xl font-medium font-robot text-white">
               TemGen

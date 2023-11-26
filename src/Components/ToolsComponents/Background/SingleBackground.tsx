@@ -29,7 +29,7 @@ function SingleBackground({
       animate={shouldAnimate(activeUrls) ? animate : initial}
       // exit={exit}
       transition={transition}
-      className={`absolute selection-none pointer-events-none  blur-sm ${className}`}
+      className={`absolute selection-none pointer-events-none gen-bg  blur-sm ${className}`}
     >
       <Image
         width={500}

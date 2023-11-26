@@ -80,7 +80,7 @@ const ReduxApiSliceCreatorBox: React.FC<Props> = () => {
                   language: technology,
                 },
                 {
-                  name: `${single}Book.${technology}`,
+                  name: `${single}Selector.${technology}`,
                   type: IFileType.File,
                   language: technology,
                 },

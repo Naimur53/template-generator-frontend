@@ -33,6 +33,7 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "30px",
+        "2xl": "90px",
       },
     },
   },

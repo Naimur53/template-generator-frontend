@@ -79,6 +79,15 @@
     z-index: 100;
     @apply bg-cyan-500
 }
+.gen-bg img{
+  
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  
+}
 /* adding button style with before after  */
 /* .home-banner-button::before{
     content: "";

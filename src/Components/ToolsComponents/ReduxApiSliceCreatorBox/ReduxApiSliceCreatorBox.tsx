@@ -1,6 +1,7 @@
 import FileExplorer from "@/Components/FileExpoler/FileExpoler";
 import PureTextInputTaker from "@/Components/Shared/PureTextInputTaker";
 import useInput from "@/Hooks/useInput";
+import { reduxFileData } from "@/helper/dataCreator/reduxFileData";
 import { IFileStructure, IFileType } from "@/interface/common";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 import {
@@ -14,6 +15,7 @@ import { faClose, faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useState } from "react";
+import ReduxCreatedFileCloseButton from "./ReduxCreatedFileCloseButton";
 type Props = {};
 
 const ReduxApiSliceCreatorBox: React.FC<Props> = () => {
@@ -22,75 +24,24 @@ const ReduxApiSliceCreatorBox: React.FC<Props> = () => {
   const dispatch = useAppDispatch();
 
   const [shouldAdd, setShouldAdd] = useState(false);
-  const data: IFileStructure = {
-    name: "Redux",
-    type: IFileType.Folder,
-    children: [
-      {
-        name: "app",
+  const data: IFileStructure = reduxFileData.getReduxFileData(
+    technology,
+    apis.map(
+      (single): IFileStructure => ({
+        name: single,
         type: IFileType.Folder,
-        children: [
-          {
-            name: `store.${technology}`,
-            type: IFileType.File,
-            language: technology,
-          },
-        ],
-      },
-      {
-        name: "features",
-        type: IFileType.Folder,
-        children: [
-          {
-            name: "apiSlice",
-            type: IFileType.Folder,
-            children: [
-              {
-                name: `apiSlice.${technology}`,
-                type: IFileType.File,
-                language: technology,
-              },
-            ],
-          },
-          ...apis.map(
-            (single): IFileStructure => ({
-              name: single,
-              type: IFileType.Folder,
-              language: technology,
-              Input: (
-                <p key={single} className="group">
-                  {single}
-                  <button
-                    onClick={() => dispatch(removeApis(single))}
-                    className="opacity-0 invisible ml-2 group-hover:visible group-hover:opacity-100 "
-                  >
-                    <FontAwesomeIcon className="" icon={faClose} />
-                  </button>
-                </p>
-              ),
-              children: [
-                {
-                  name: `${single}Api.${technology}`,
-                  type: IFileType.File,
-                  language: technology,
-                },
-                {
-                  name: `${single}Slice.${technology}`,
-                  type: IFileType.File,
-                  language: technology,
-                },
-                {
-                  name: `${single}Selector.${technology}`,
-                  type: IFileType.File,
-                  language: technology,
-                },
-              ],
-            })
-          ),
-        ],
-      },
-    ],
-  };
+        language: technology,
+        Input: (
+          <ReduxCreatedFileCloseButton
+            name={single}
+          ></ReduxCreatedFileCloseButton>
+        ),
+        children: reduxFileData.getChildrenOfFeatures(single, technology),
+      })
+    )
+  );
+
+  // handler adding new api
   if (shouldAdd && data?.children && data.children[1].children) {
     data.children[1].children = [
       ...data.children[1].children,

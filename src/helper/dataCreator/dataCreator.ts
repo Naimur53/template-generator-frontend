@@ -47,7 +47,7 @@ const jsFrameWorks: ISingleTechnology[] = [
   },
 ];
 
-let allPossibleData: ISingleTechnology[][] = [];
+let allFrontendAnimationPossibleData: ISingleTechnology[][] = [];
 cssItems.forEach((cssItem, index) => {
   let items: ISingleTechnology[][] = [];
   languages.forEach((singleLang, i) => {
@@ -65,9 +65,9 @@ cssItems.forEach((cssItem, index) => {
       });
     });
   });
-  allPossibleData.push(...items);
+  allFrontendAnimationPossibleData.push(...items);
 });
 
 export const dataCreator = {
-  allPossibleData,
+  allFrontendAnimationPossibleData,
 };

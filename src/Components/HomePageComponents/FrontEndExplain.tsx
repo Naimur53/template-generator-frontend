@@ -2,17 +2,12 @@ import { dataCreator } from "@/helper/dataCreator/dataCreator";
 import { AnimatePresence, motion } from "framer-motion";
 import { copyFileSync } from "fs";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type Props = {};
 
 const FrontEndExplain = (props: Props) => {
-  const techs = dataCreator.allPossibleData;
-  const myTechnology = [
-    ["React", "Tailwind CSS", "Hooks", "Firebase", "JavaScript", "Redux"],
-    ["Next js", "Tailwind CSS", "Hooks", "Firebase", "JavaScript"],
-    ["Next js", "Tailwind CSS", "Hooks", "Firebase", "Typescript"],
-  ];
+  const techs = useMemo(() => dataCreator.allFrontendAnimationPossibleData, []);
   const [technologyIndex, setTechnologyIndex] = useState(0);
   useEffect(() => {
     const time = setInterval(() => {
@@ -22,16 +17,15 @@ const FrontEndExplain = (props: Props) => {
       clearInterval(time);
     };
   }, []);
-  console.log(techs[technologyIndex]);
   return (
-    <section className="container pt-10">
-      <div className="grid grid-cols-2 gap-20  pb-[300px]">
+    <section className="container section-padding">
+      <div className="grid grid-cols-1 pt-5 xl:grid-cols-2 gap-20  ">
         <div>
           <span className="font-robot text-lg text-cyan-500">
             Front End Kickstarter
           </span>
-          <h2 className="text-5xl leading-[60px] font-semibold  mt-4">
-            Generate Your Template with desire technology{" "}
+          <h2 className="home-heading mt-4">
+            Generate Your Template with desire technology
           </h2>
           <p className="mt-10">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
@@ -41,15 +35,21 @@ const FrontEndExplain = (props: Props) => {
           </p>
           <div className="grid grid-cols-3 mt-10">
             <div className=" text-center py-4 border-r border-cyan-300">
-              <span className="text-3xl font-bold text-cyan-400">5</span>
+              <span className="text-4xl inline-block mb-3 font-bold text-cyan-400">
+                5
+              </span>
               <p>Css Framework</p>
             </div>
             <div className=" text-center py-4 border-r border-cyan-300">
-              <span className="text-3xl font-bold text-cyan-400">13</span>
+              <span className="text-4xl inline-block mb-3 font-bold text-cyan-400">
+                13
+              </span>
               <p>React hooks</p>
             </div>
             <div className=" text-center py-4  ">
-              <span className="text-3xl font-bold text-cyan-400">5</span>
+              <span className="text-4xl inline-block mb-3 font-bold text-cyan-400">
+                5
+              </span>
               <p>Firebase Auth</p>
             </div>
           </div>

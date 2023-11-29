@@ -38,6 +38,9 @@
     input.error{
         @apply border-red-500 focus:outline-none
     }
+    .banner-heading{
+      @apply text-4xl lg:text-7xl font-mon lg:leading-[90px] font-bold text-center
+    }
     .home-heading{
       @apply text-5xl leading-[60px] font-semibold 
     }

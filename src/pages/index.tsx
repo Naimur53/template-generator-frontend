@@ -1,4 +1,5 @@
 "use client";
+import BackendBanner from "@/Components/HomePageComponents/BackendBanner";
 import Banner from "@/Components/HomePageComponents/Banner";
 import FrontEndExplain from "@/Components/HomePageComponents/FrontEndExplain";
 import ReduxExplain from "@/Components/HomePageComponents/ReduxExplain";
@@ -14,6 +15,7 @@ export default function Home() {
       <Banner></Banner>
       <FrontEndExplain></FrontEndExplain>
       <ReduxExplain></ReduxExplain>
+      <BackendBanner></BackendBanner>
     </div>
   );
 }

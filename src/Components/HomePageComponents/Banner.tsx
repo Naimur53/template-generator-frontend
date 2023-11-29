@@ -9,7 +9,7 @@ const Banner = (props: Props) => {
     <div className="container px-2 lg:px-16  section-padding">
       <div className=" flex justify-center gap-5">
         <div className="text-center xl:w-[90%]">
-          <h1 className="text-4xl lg:text-7xl font-mon lg:leading-[90px] font-bold ">
+          <h1 className=" banner-heading">
             Getting started on a new project should not be a hassle anymore
           </h1>
           <p className="text-xl mb-5 mt-10 w-full lg:w-[60%] font-sedmibold mx-auto text-secondary">

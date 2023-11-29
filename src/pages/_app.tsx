@@ -1,6 +1,7 @@
 import { store } from "@/redux/app/store";
 import "@/styles/globals.css";
 import "@/styles/FieldInputs.css";
+import "@/styles/BackendCustomChart.css";
 import "@/styles/Sidebar.css";
 import "@/Components/ToolsComponents/TechnologyBox/TechnologyBox.css";
 import "@/Components/ToolsComponents/FrameworkBox/FrameworkBox.css";

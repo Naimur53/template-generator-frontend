@@ -128,7 +128,7 @@ const AnimatedReduxFeaturesCreator = (props: Props) => {
           </div>
         </div>
         <div className="">
-          <FileExplorer data={data}></FileExplorer>
+          {visible && <FileExplorer data={data}></FileExplorer>}
         </div>
         <div className=""></div>
       </div>

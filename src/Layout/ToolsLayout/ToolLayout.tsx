@@ -18,7 +18,7 @@ const ToolLayout: React.FC<LayoutProps> = ({ children }) => {
             initial={{ x: 10 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.4, ease: "linear" }}
-            className="w-full ml-[320px] p-2  "
+            className="w-full ml-[320px] p-2 pt-20 "
           >
             <>{children}</>
           </motion.div>

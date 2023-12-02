@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 type Props = {};
 
 const BackendCustomChart = (props: Props) => {
@@ -37,11 +38,61 @@ const BackendCustomChart = (props: Props) => {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   };
+
+  const [isMongoose, setIsMongoose] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsMongoose((pre) => !pre);
+    }, 1500);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div className="backed-custom-chart-warp h-[650px] flex justify-center items-center ">
-      <div className="outer-rounded-box">
-        <div className="inner-round-box">
-          <img className="w-[200px]" src="/icons/mongodb.png" alt="" />
+      <div
+        className={`outer-rounded-box ${
+          !isMongoose ? "border-green-600" : "border-cyan-600"
+        }`}
+      >
+        <div
+          className={`inner-round-box ${
+            isMongoose ? "border-green-600" : "border-cyan-600"
+          }`}
+        >
+          {isMongoose ? (
+            <motion.div
+              key={isMongoose ? "img1" : "img2"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <Image
+                quality={100}
+                width={50}
+                height={200}
+                className="w-full"
+                src="/images/transparent-mongodb.png"
+                alt=""
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key={isMongoose ? "img1" : "img2"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <Image
+                quality={100}
+                width={50}
+                height={200}
+                className="w-full"
+                src="/images/postgres.png"
+                alt=""
+              />
+            </motion.div>
+          )}
+
           {/* <img className="w-[200px]" src="/icons/prisma.png" alt="" /> */}
         </div>
         <motion.div

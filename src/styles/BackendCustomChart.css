@@ -5,13 +5,13 @@
     --size:150px;
     width: var(--size);
     height: var(--size);
-    @apply rounded-full flex justify-center items-center  border-green-700 border-[4px]
+    @apply rounded-full flex justify-center items-center transition-all    border-[4px]
 }
 .outer-rounded-box{
     --size:300px;
     width: var(--size);
     height: var(--size);
-    @apply rounded-full flex justify-center items-center border-cyan-600 border-[7px] relative 
+    @apply rounded-full flex justify-center items-center  border-[7px] relative transition-all
 }
 
 .outer-single-item{

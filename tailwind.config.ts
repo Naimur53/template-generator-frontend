@@ -21,6 +21,8 @@ const config: Config = {
         // primary: "#181823",
         primary: "#000000",
         secondary: "#94a3b8",
+        lightCyan: "#0D0D26",
+
         "error-primary": "#ef4444",
         "btn-primary": "#00898B",
       },

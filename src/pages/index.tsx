@@ -3,6 +3,7 @@ import BackendBanner from "@/Components/HomePageComponents/BackendBanner";
 import Banner from "@/Components/HomePageComponents/Banner";
 import FrontEndExplain from "@/Components/HomePageComponents/FrontEndExplain";
 import ReduxExplain from "@/Components/HomePageComponents/ReduxExplain";
+import StepOfBackend from "@/Components/HomePageComponents/StepOfBackend";
 import NavBar from "@/Components/Shared/NavBar";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,7 @@ export default function Home() {
       <FrontEndExplain></FrontEndExplain>
       <ReduxExplain></ReduxExplain>
       <BackendBanner></BackendBanner>
+      <StepOfBackend></StepOfBackend>
     </div>
   );
 }

@@ -16,19 +16,19 @@
     background-repeat: no-repeat;
   
     background-image: url('https://i.ibb.co/Y3z6YTs/bg-curve.png');
-    filter: hue-rotate(170deg);
+    filter: hue-rotate(130deg);
     @apply inset-0 absolute
 }
-.graydiv{
+.grayddiv{
     position: absolute;
     inset: 0;  
-    /* mix-blend-mode: color; */
+    /* mix-blend-mode: color;
     animation-name: example;
 
     animation-duration: 20s; 
     animation-iteration-count: infinite;
-    left:0;  
-    @apply bg-main-dark
+    left:0;   */
+    @apply bg-main-dark;
 }
 @keyframes example {
     0% {left: 0;}
@@ -76,7 +76,7 @@
     transition: all 0.5s ease;
     animation: rotation 3s infinite linear;
 
-    @apply bg-cyan-600;
+    @apply bg-cyan-400;
 }
 
 .step-around:hover {
@@ -98,6 +98,12 @@
   .step-section{
     @apply p-4 bg-lightCyan
   }
+.step-section h4{
+    @apply  font-bold mb-2;
+  }
+.step-section p{
+    @apply text-sm
+}
   /* step animation  */
    
 .step-1,.step-2,.step-3{

@@ -4,6 +4,8 @@ import Banner from "@/Components/HomePageComponents/Banner";
 import FrontEndExplain from "@/Components/HomePageComponents/FrontEndExplain";
 import ReduxExplain from "@/Components/HomePageComponents/ReduxExplain";
 import StepOfBackend from "@/Components/HomePageComponents/StepOfBackend";
+import Testimonials from "@/Components/HomePageComponents/Testimonials";
+import WhyTemgen from "@/Components/HomePageComponents/WhyTemgen";
 import NavBar from "@/Components/Shared/NavBar";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +20,8 @@ export default function Home() {
       <ReduxExplain></ReduxExplain>
       <BackendBanner></BackendBanner>
       <StepOfBackend></StepOfBackend>
+      <WhyTemgen></WhyTemgen>
+      <Testimonials></Testimonials>
     </div>
   );
 }

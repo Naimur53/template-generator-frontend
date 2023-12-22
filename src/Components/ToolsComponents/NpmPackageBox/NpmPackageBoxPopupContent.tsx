@@ -49,7 +49,7 @@ const NpmPackageBoxPopupContent = (props: Props) => {
             {unSelectedNpmPackages.map((single) => (
               <button
                 onClick={() => handleAddNewPage(single)}
-                className={`p-2 rounded-2xl bg-primary flex items-center border-2 justify-center flex-col transition-all ${
+                className={`p-2 rounded-2xl bg-lightCyan flex items-center border-2 justify-center flex-col transition-all ${
                   isSelected(single.name)
                     ? "border-blue-400 text-blue-400"
                     : "border-transparent text-white"

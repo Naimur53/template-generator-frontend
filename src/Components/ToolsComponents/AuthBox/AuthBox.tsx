@@ -78,8 +78,8 @@ const AuthBox = (props: Props) => {
                 </svg>
               </button>
             </div>
-            <div className="bg-main-dark p-5">
-              <AuthBoxModal></AuthBoxModal>
+            <div className="bg-main-dark p-5 rounded-lg">
+              <AuthBoxModal onClose={setOpen}></AuthBoxModal>
             </div>
           </Popup>
         </div>

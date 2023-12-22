@@ -1,3 +1,5 @@
+import { IUser } from "./common";
+
 export enum ITechnology {
   JavaScript = "js",
   Typescript = "ts",
@@ -38,3 +40,9 @@ export interface IModule {
   searchTermFields?: string[];
   exactTermFields?: string[];
 }
+export type ICreation = {
+  _id: string;
+  technology: ITechnology;
+  language: ITechnology;
+  createdBy: IUser;
+};

@@ -160,70 +160,72 @@ const SingleMongooseSchemaCreator = ({
           />
           <p className="text-xl">Add Pagination And Query</p>
         </div>
-        <div
-          className={`grid grid-cols-2 gap-28 pagination-and-query  mt-2 ml-8  transition-all ${
-            shouldAddPaginationAndQuery
-              ? "grayscale-0 opacity-100"
-              : "grayscale opacity-50"
-          }`}
-        >
-          <div>
-            <div className="flex justify-between">
-              <p className="text-lg">Search Term Query Field</p>
-              <button
-                title="something"
-                className="p-2 rounded-full border border-white flex justify-center items-center text-sm h-[22px] w-[22px]"
-              >
-                <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
-              </button>
+        {shouldAddPaginationAndQuery ? (
+          <div
+            className={`grid grid-cols-2 gap-28 pagination-and-query  mt-2 ml-8  transition-all ${
+              shouldAddPaginationAndQuery
+                ? "grayscale-0 opacity-100"
+                : "grayscale opacity-50"
+            }`}
+          >
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg">Search Term Query Field</p>
+                <button
+                  title="something"
+                  className="p-2 rounded-full border border-white flex justify-center items-center text-sm h-[22px] w-[22px]"
+                >
+                  <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
+                </button>
+              </div>
+              <div className="custom-multi-selection mt-2">
+                <Select
+                  onChange={handleSearchChange}
+                  value={selectedSearch}
+                  options={allFieldsAsOptions}
+                  isMultiple={true}
+                  isDisabled={!shouldAddPaginationAndQuery}
+                  primaryColor="blue"
+                  placeholder="Choose Fields"
+                  classNames={{
+                    menu: "bg-primary",
+                    list: "bg-primary",
+                    tagItemText:
+                      "text-blue-900 font-bold text-lg px-3 rounded-2xl ",
+                  }}
+                ></Select>
+              </div>
             </div>
-            <div className="custom-multi-selection mt-2">
-              <Select
-                onChange={handleSearchChange}
-                value={selectedSearch}
-                options={allFieldsAsOptions}
-                isMultiple={true}
-                isDisabled={!shouldAddPaginationAndQuery}
-                primaryColor="blue"
-                placeholder="Choose Fields"
-                classNames={{
-                  menu: "bg-primary",
-                  list: "bg-primary",
-                  tagItemText:
-                    "text-blue-900 font-bold text-lg px-3 rounded-2xl ",
-                }}
-              ></Select>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg">Exact Match Query Field</p>
+                <button
+                  title="something"
+                  className="p-2 rounded-full border border-white flex justify-center items-center text-sm h-[22px] w-[22px]"
+                >
+                  <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
+                </button>
+              </div>
+              <div className="custom-multi-selection mt-2">
+                <Select
+                  onChange={handleExactChange}
+                  value={selectedExact}
+                  options={allFieldsAsOptions}
+                  isMultiple={true}
+                  primaryColor="blue"
+                  isDisabled={!shouldAddPaginationAndQuery}
+                  placeholder="Choose Fields"
+                  classNames={{
+                    menu: "bg-primary",
+                    list: "bg-primary",
+                    tagItemText:
+                      "text-blue-900 font-bold text-lg px-3 rounded-2xl ",
+                  }}
+                ></Select>
+              </div>
             </div>
           </div>
-          <div>
-            <div className="flex justify-between">
-              <p className="text-lg">Exact Match Query Field</p>
-              <button
-                title="something"
-                className="p-2 rounded-full border border-white flex justify-center items-center text-sm h-[22px] w-[22px]"
-              >
-                <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
-              </button>
-            </div>
-            <div className="custom-multi-selection mt-2">
-              <Select
-                onChange={handleExactChange}
-                value={selectedExact}
-                options={allFieldsAsOptions}
-                isMultiple={true}
-                primaryColor="blue"
-                isDisabled={!shouldAddPaginationAndQuery}
-                placeholder="Choose Fields"
-                classNames={{
-                  menu: "bg-primary",
-                  list: "bg-primary",
-                  tagItemText:
-                    "text-blue-900 font-bold text-lg px-3 rounded-2xl ",
-                }}
-              ></Select>
-            </div>
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );

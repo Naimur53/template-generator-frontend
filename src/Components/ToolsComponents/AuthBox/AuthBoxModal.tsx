@@ -3,9 +3,9 @@ import { addFirebaseConfig } from "@/redux/features/frontEndGen/frontEndGen";
 import Error from "next/error";
 import React, { useState } from "react";
 
-type Props = {};
+type Props = { onClose: (arg0: any) => void };
 
-const AuthBoxModal = (props: Props) => {
+const AuthBoxModal = ({ onClose }: Props) => {
   const firebaseConfig = useAppSelector(
     (state) => state.frontEndGen.firebaseConfig
   );
@@ -16,7 +16,11 @@ const AuthBoxModal = (props: Props) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputValue = event.target.value;
     const replacedString = inputValue.replace(/^(\s*)([\w]+):/gm, '$1"$2":');
-
+    if (!inputValue.length) {
+      setParsedData(null);
+      setError(null);
+      return;
+    }
     try {
       const allKeys = [
         "apiKey",
@@ -52,6 +56,7 @@ const AuthBoxModal = (props: Props) => {
 
   const handleAddConfig = () => {
     dispatch(addFirebaseConfig(parsedData || undefined));
+    onClose(false);
   };
   return (
     <div>
@@ -74,14 +79,14 @@ const AuthBoxModal = (props: Props) => {
 }`}
           defaultValue={JSON.stringify(firebaseConfig)}
           onChange={handleInputChange}
-          className="w-full h-60 resize-none bg-secondary rounded px-2 py-3"
+          className="w-full h-60 resize-none bg-lightCyan rounded px-2 py-3"
         ></textarea>
 
         {error && <p className="text-error-primary">{error}</p>}
       </div>
       <div className="flex justify-end">
         <button
-          disabled={!Boolean(parsedData)}
+          disabled={Boolean(error)}
           onClick={handleAddConfig}
           className="generator-button disabled:grayscale grayscale-0 transition-all"
         >

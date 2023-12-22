@@ -5,11 +5,18 @@ import type { TypedUseSelectorHook } from "react-redux";
 import frontEndGen from "@/redux/features/frontEndGen/frontEndGen";
 import backendGen from "@/redux/features/backEndGen/backEndGen";
 import userSlice from "@/redux/features/user/userSlice";
+import { apiSlice } from "../features/apiSlice/apiSlice";
 export const store = configureStore({
-  reducer: { basicInfo, frontEndGen, backendGen, user: userSlice },
+  reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    basicInfo,
+    frontEndGen,
+    backendGen,
+    user: userSlice,
+  },
   devTools: process.env.NODE_ENV !== "production",
-  //   middleware: (getDefaultMiddlewares) =>
-  //     getDefaultMiddlewares().concat(apiSlice.middleware),
+  middleware: (getDefaultMiddlewares) =>
+    getDefaultMiddlewares().concat(apiSlice.middleware),
 });
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;

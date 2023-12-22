@@ -15,12 +15,17 @@ import { useDebounce } from "@/Hooks/useDebounce";
 import { toast } from "react-toastify";
 import useCheckAppName from "@/Hooks/useCheckAppName";
 import { addName } from "@/redux/features/basicInfo/basicInfo";
+import { clearApis } from "@/redux/features/frontEndGen/frontEndGen";
 type Props = {};
 
 const NextTem = (props: Props) => {
   const name = useAppSelector((state) => state.basicInfo.name);
   const dispatch = useAppDispatch();
   const { error } = useCheckAppName();
+  //remove redux state
+  useEffect(() => {
+    dispatch(clearApis());
+  }, [dispatch]);
   return (
     <ToolLayout>
       <div>

@@ -67,6 +67,9 @@ export const frontEndGen = createSlice({
     removeApis: (state, action: PayloadAction<string>) => {
       state.apis = state.apis.filter((single) => single !== action.payload);
     },
+    clearApis: (state) => {
+      state.apis = [];
+    },
     addFirebaseConfig: (
       state,
       action: PayloadAction<IFirebaseConfig | undefined>
@@ -89,6 +92,7 @@ export const {
   addApis,
   removeApis,
   addFirebaseConfig,
+  clearApis,
 } = frontEndGen.actions;
 
 export default frontEndGen.reducer;

@@ -80,7 +80,7 @@ const NpmPackageBox: React.FC<Props> = (props) => {
             </svg>
           </button>
         </div>
-        <div className="bg-main-dark p-5">
+        <div className="bg-main-dark p-5 rounded-lg">
           <NpmPackageBoxPopupContent></NpmPackageBoxPopupContent>
         </div>
       </Popup>

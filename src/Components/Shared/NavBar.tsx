@@ -3,6 +3,7 @@ import { useAppSelector } from "@/redux/app/store";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Logo from "./Logo";
 
 const NavBar: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
@@ -10,14 +11,7 @@ const NavBar: React.FC = () => {
   return (
     <>
       <div className="fixed z-[300] top-0 left-0 right-0 max-h-[65px] bar-background py-2 px-4 flex items-center justify-between">
-        <Link href={"/"}>
-          <div className="flex gap-2 items-center ">
-            <Image width={55} height={200} src="/images/logo.svg" alt="logo" />
-            <h2 className="text-3xl font-medium font-robot text-white">
-              TemGen
-            </h2>
-          </div>
-        </Link>
+        <Logo></Logo>
         {/* <div className="flex flex-col items-end gap-1">
           <div className="w-[25px] bg-white h-[3px]"></div>
           <div className="w-[15px] bg-white h-[3px]"></div>

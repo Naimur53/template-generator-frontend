@@ -1,8 +1,10 @@
 import { ICssFrameworks } from "@/interface/common";
+
 type ISingleTechnology = {
   name: string;
   icon: string;
 };
+
 const cssItems: ISingleTechnology[] = [
   {
     name: ICssFrameworks.MaterialUi,
@@ -48,6 +50,7 @@ const jsFrameWorks: ISingleTechnology[] = [
 ];
 
 let allFrontendAnimationPossibleData: ISingleTechnology[][] = [];
+
 cssItems.forEach((cssItem, index) => {
   let items: ISingleTechnology[][] = [];
   languages.forEach((singleLang, i) => {

@@ -29,13 +29,14 @@ const config: Config = {
         mon: ["Montserrat", "sans-serif"],
       },
     },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "30px",
-        "2xl": "90px",
-      },
-    },
+    // container: {
+    //   center: true,
+    //   padding: {
+    //     DEFAULT: "16px",
+    //     lg: "20px",
+    //     "2xl": "90px",
+    //   },
+    // },
   },
   plugins: [],
 };

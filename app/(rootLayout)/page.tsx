@@ -1,7 +1,11 @@
+import Banner from "../components/home/Banner";
+import FrontEndExplain from "../components/home/FrontEndExplain";
+
 export default function Home() {
   return (
-    <main className="p-24">
-      main
+    <main>
+      <Banner />
+      <FrontEndExplain />
     </main>
   );
 }

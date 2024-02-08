@@ -6,9 +6,9 @@ import SingleNavItems from "./SingleNavItems";
 import { navItemsBackend, navItemsFrontEnd } from "@/utils/sideBarInfo";
 type Props = {};
 
-const Sidebar = ({}: Props) => {
+const Sidebar = ({ }: Props) => {
   return (
-    <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bar-background">
+    <div className="h-[calc(100vh-65px)] fixed left-0 bottom-0 w-[320px] bar-background overflow-y-auto">
       <div className="p-[30px]">
         <h2 className="sidebar-heading">Front End Generator</h2>
         <div className="sidebar-container">

@@ -35,6 +35,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       icon: faUsers,
     },
     {
+      to: "manage-user",
+      matchUrl: "",
+      name: "Manage User",
+      icon: faUsers,
+    },
+    {
       name: "Overview",
       to: "",
       matchUrl: "/dashboard",
@@ -51,9 +57,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-[1000]  flex h-screen w-72.5 flex-col overflow-y-hidden   duration-300 ease-linear  lg:static lg:translate-x-0 pt-3 pb-[50px] px-[20px] border-r border-gray-900 bg-lightCyan ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
+      className={`absolute left-0 top-0 z-[1000]  flex h-screen w-72.5 flex-col overflow-y-hidden   duration-300 ease-linear  lg:static lg:translate-x-0 pt-3 pb-[50px] px-[20px] border-r border-gray-900 bg-lightCyan ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2  ">
@@ -94,10 +99,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li className="" key={single.to}>
                   <Link
                     href={`/dashboard/${single.to}`}
-                    className={`group relative flex items-center gap-2.5 rounded-lg py-2 px-4 font-medium w-[197px] duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4  ${
-                      pathname === single.matchUrl &&
+                    className={`group relative flex items-center gap-2.5 rounded-lg py-2 px-4 font-medium w-[197px] duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4  ${pathname === single.matchUrl &&
                       "nav-active bg-main-dark text-white "
-                    }`}
+                      }`}
                   >
                     <FontAwesomeIcon icon={single.icon} />
                     <span>{single.name}</span>

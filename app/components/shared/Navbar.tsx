@@ -1,0 +1,52 @@
+'use client'
+
+import Link from "next/link";
+import Logo from "./Logo";
+import Image from "next/image";
+import useFirebase from "@/hooks/useFirebase";
+import { useAppSelector } from "@/redux/app/store";
+
+export default function Navbar() {
+
+    const user = useAppSelector((state) => state?.user.user);
+    const { signOut } = useFirebase();
+
+    return (
+        <div className="fixed z-[300] top-0 left-0 right-0 max-h-[65px] bar-background py-2 px-4 flex items-center justify-between">
+            <Logo />
+
+            {user?._id ? (
+                <button className="relative group ">
+                    <Image
+                        className="w-10 h-10 rounded-full"
+                        width={100}
+                        height={100}
+                        src={user.photoURL || "/images/default_profile.png"}
+                        alt="user"
+                    />
+                    <div className="absolute bg-[#080821] backdrop-blur-sm  px-2 py-4 shadow-lg rounded-lg group-hover:opacity-100 group-hover:visible invisible transition-all opacity-0  right-0  w-[200px] mt-3">
+                        <div>
+                            <p className="font-bold text-xl">{user.displayName}</p>
+                        </div>
+                        <div>
+                            <button
+                                onClick={signOut}
+                                className="px-4 py-2 bg-error-primary rounded mt-3"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </button>
+            ) : (
+                <div>
+                    <Link href="/login">
+                        <button className="px-4 border border-cyan-500 font-bold py-1 rounded text-cyan-500">
+                            Sign In
+                        </button>
+                    </Link>
+                </div>
+            )}
+        </div>
+    );
+};

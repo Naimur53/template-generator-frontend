@@ -1,0 +1,33 @@
+ 
+.sidebar-heading{
+    @apply font-robot  text-xl mb-3
+}
+.sidebar-container{
+    @apply flex flex-col gap-2
+}
+.sidebar-single-items-wrap{
+    @apply flex gap-[17px] px-[16px] items-center  py-[12px]  rounded-2xl transition-all z-30 relative
+}
+.sidebar-single-items-wrap::before{
+    content: '';
+    @apply absolute -z-10 bg-[#25254A80] left-0 right-0 top-0 bottom-0 w-[50%] opacity-0 rounded-2xl  transition-all duration-300
+    
+}
+.sidebar-single-items-wrap:hover::before{
+    @apply  w-[100%] opacity-100
+}
+.sidebar-single-items-wrap.active::before{
+    @apply  w-[100%] opacity-100
+}
+
+.singleMultiNavContentWrap{
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: all .3s;
+    @apply grid
+}
+.singleMultiNavContentWrap.open{
+    grid-template-rows: 1fr;
+    overflow: hidden; 
+    @apply mt-2
+}

@@ -1,0 +1,68 @@
+.c{
+    display: none;
+}
+.inner-round-box{
+    --size:150px;
+    width: var(--size);
+    height: var(--size);
+    @apply rounded-full flex justify-center items-center transition-all    border-[4px]
+}
+.outer-rounded-box{
+    --size:300px;
+    width: var(--size);
+    height: var(--size);
+    @apply rounded-full flex justify-center items-center  border-[7px] relative transition-all
+}
+
+.outer-single-item{
+    --size:55px;
+    --items:6 ;
+    width: var(--size);
+    height: var(--size);
+    transform: rotate(calc(var(--i) * (360deg / var(--items)))) translateY(150px) translateX(0%);
+
+    @apply rounded-full flex justify-center items-center  absolute top-[120px] left-[120px] ;
+} 
+
+.outer-content-wrap{
+    transform: rotate(calc(var(--i) * (-360deg / var(--items))));
+    @apply absolute flex justify-center items-center   inset-0 bg-[#0D0D26] backdrop-blur-lg rounded-full ;
+}
+
+.outer-content-wrap::before{
+    content: "";
+    /* @apply inline-block h-1 bg-white w-[50px] absolute top-1/2 -right-full; */
+    /* transform: rotate(calc(var(--i) * (100deg / var(--items)))) translateY(10px) translateX(0%); */
+}
+
+.outer-content-text-details-wrap{
+    @apply absolute w-[300px] p-5 px-6 rounded-xl  bg-[#0D0D26] opacity-80 transition-all cursor-pointer
+}
+.outer-single-item:hover  .outer-content-text-details-wrap{
+    @apply opacity-100
+}
+.outer-content-text-details-wrap::before{
+    content: '';
+    rotate: 45deg;
+    @apply inline-block absolute w-[30px] rounded h-[30px] bg-[#0D0D26] 
+}
+.outer-content-text-details-wrap.details-wrap-1{
+    @apply  -left-[50%] -translate-x-full before:right-[-0px]  before:top-1/2 before:-translate-y-1/2
+} 
+.outer-content-text-details-wrap.details-wrap-2{
+    @apply  -left-[50%] -translate-x-full top-[-25px] before:right-[-0px]  before:top-[45%] before:-translate-y-1/2
+} 
+.outer-content-text-details-wrap.details-wrap-3{
+    @apply   -translate-x-1/2 left-1/2 -top-1/2 -translate-y-full before:bottom-[10px]  before:right-[45%] before:translate-x-1/2 before:translate-y-1/2
+} 
+
+.outer-content-text-details-wrap.details-wrap-4{
+    @apply  -right-[50%] translate-x-full before:left-[-0px]   before:top-[45%] before:-translate-x-1/2
+} 
+.outer-content-text-details-wrap.details-wrap-5{
+    @apply  -right-[50%] translate-x-full before:left-[-0px]   before:top-1/2 before:-translate-x-1/2
+}  
+
+.outer-content-text-details-wrap.details-wrap-6{
+    @apply   -translate-x-1/2 left-1/2 -bottom-1/2 translate-y-full before:top-[-10%]  before:left-[38%] before:translate-x-1/2  before:-translate-y-1/2
+} 

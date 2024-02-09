@@ -17,15 +17,15 @@ export default function FrontEndExplain() {
         return () => {
             clearInterval(time);
         };
-    }, [techs.length]);
+    }, []);
 
     return (
-        <section className="container mx-auto grid grid-cols-1 pt-16 xl:grid-cols-2 gap-20">
+        <section className="container mx-auto px-4 lg:px-0 grid grid-cols-1 pt-16 xl:grid-cols-2 gap-20">
             <div>
                 <span className="font-robot text-lg text-cyan-500">
                     Front End Kickstarter
                 </span>
-                <h2 className="text-3xl lg:text-5xl font-semibold mt-4">
+                <h2 className="home-heading mt-4">
                     Generate Your Template with desire technology
                 </h2>
                 <p className="mt-10">

@@ -17,25 +17,25 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: TSidebarProps) 
 
     let items = [
         {
-            to: "allUser",
-            matchUrl: "",
-            name: "All User",
-            icon: faUsers,
-        },
-        {
-            to: "manage-user",
-            matchUrl: "",
-            name: "Manage User",
-            icon: faUsers,
-        },
-        {
             name: "Overview",
             to: "",
             matchUrl: "/dashboard",
             icon: faBorderAll,
         },
         {
-            name: "profile settings",
+            to: "/all-user",
+            matchUrl: "/dashboard/all-user",
+            name: "All User",
+            icon: faUsers,
+        },
+        {
+            to: "manage-user",
+            matchUrl: "/dashboard/manage-user",
+            name: "Manage User",
+            icon: faUsers,
+        },
+        {
+            name: "Profile settings",
             to: "/profileSetting",
             matchUrl: "/dashboard/profileSetting",
             icon: faGear,

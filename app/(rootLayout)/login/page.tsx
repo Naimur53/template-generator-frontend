@@ -10,9 +10,10 @@ import { useEffect } from "react";
 export default function LoginPage() {
     const { signInWithGoogle, signInWithFacebook, signInWithGithub, signOut } =
         useFirebase();
+
     const { loading, user } = useAppSelector((state) => state.user);
     const router = useRouter();
-
+    console.log(user);
     useEffect(() => {
         if (user?.uid) {
             router.push("/tools");

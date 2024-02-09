@@ -6,9 +6,11 @@ import { toast } from "react-toastify";
 import { User, fetchSignInMethodsForEmail, getIdToken } from "firebase/auth";
 import { setToLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storageKey";
+
 const useFirebaseAuthObserver = () => {
   const { auth, signOut } = useFirebase();
   const dispatch = useAppDispatch();
+
   const getTokensAfterSomeTime = (authUser: User | null) => {
     setInterval(() => {
       if (authUser) {
@@ -22,6 +24,7 @@ const useFirebaseAuthObserver = () => {
       }
     }, 1000 * 60 * 4);
   };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser?.uid) {
@@ -47,7 +50,7 @@ const useFirebaseAuthObserver = () => {
                 lastLoginAt: new Date(Number(lastLoginAt)),
               })
             )
-              .then((res) => {
+              .then((res: { type: string }) => {
                 if (res.type === "user/postUser/rejected") {
                   toast.error("Login unsuccessfully!");
                   signOut();
@@ -55,7 +58,7 @@ const useFirebaseAuthObserver = () => {
                 }
                 getTokensAfterSomeTime(authUser);
               })
-              .catch((res) => {
+              .catch(() => {
                 toast.error("Login unsuccessfully!");
                 signOut();
               });

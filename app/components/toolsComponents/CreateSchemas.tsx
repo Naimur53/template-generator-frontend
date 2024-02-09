@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/redux/app/store";
 import Image from "next/image";
+import SingleMongooseSchemaCreator from "./SingleMongooseSchemaCreator";
 
 export default function CreateSchemas() {
 

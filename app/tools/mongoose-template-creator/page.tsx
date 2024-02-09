@@ -1,3 +1,4 @@
+import CreateSchemas from "@/app/components/toolsComponents/CreateSchemas";
 import GeneratorButton from "@/app/components/toolsComponents/GeneratorButton";
 import ModulesBox from "@/app/components/toolsComponents/ModulesBox";
 import useCheckAppName from "@/hooks/useCheckAppName";

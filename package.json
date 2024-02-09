@@ -20,7 +20,9 @@
     "nextjs-progressbar": "^0.0.16",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.50.1",
     "react-redux": "^9.1.0",
+    "react-tailwindcss-select": "^1.8.5",
     "react-toastify": "^10.0.4",
     "reactjs-popup": "^2.0.6"
   },

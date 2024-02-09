@@ -10,7 +10,7 @@ import { addNewModuleByName, removeModuleByName } from "@/redux/features/backEnd
 import { useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/app/store";
 
-export default function ModulesBox({ moduleOnly }: { moduleOnly: boolean }) {
+export default function ModulesBox({ moduleOnly }: { moduleOnly?: boolean }) {
 
     const backendGen = useAppSelector((state) => state.backendGen);
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function PrivetLayout({ children }: { children: React.ReactNode }) {
     const { user, loading, error } = useAppSelector((state) => state.user);
     const router = useRouter();
-
+    console.log(user);
     if (loading) {
         return <div className="h-screen flex justify-center items-center"></div>;
     }

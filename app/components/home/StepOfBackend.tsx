@@ -8,9 +8,9 @@ import Link from "next/link";
 
 export default function StepOfBackend() {
     return (
-        <div className="section-padding">
+        <div className="section-padding px-2 lg:px-0">
             <div className="service-area">
-                <div className="wave-step"></div>
+                <div className="hidden lg:block wave-step"></div>
                 <motion.div
                     initial={{
                         left: "0%",
@@ -43,7 +43,7 @@ export default function StepOfBackend() {
                     </div>
 
                     <div className="col-span-1 lg:col-span-2">
-                        <div>
+                        <div className="flex justify-center lg:justify-start">
                             <div className="position-1 ">
                                 <div className="step-around "></div>
                                 <div className="w-full flex justify-center z-30">
@@ -71,7 +71,7 @@ export default function StepOfBackend() {
                     </div>
 
                     <div className="col-span-1 lg:col-span-2">
-                        <div>
+                        <div className="flex justify-center lg:justify-start">
                             <div className="position-2">
                                 <div className="step-around"></div>
                                 <div className="w-full flex justify-center z-30">
@@ -99,7 +99,7 @@ export default function StepOfBackend() {
                     </div>
 
                     <div className="col-span-1 lg:col-span-2">
-                        <div>
+                        <div className="flex justify-center lg:justify-start">
                             <div className="position-3">
                                 <div className="step-around"></div>
                                 <div className="w-full flex justify-center z-30">

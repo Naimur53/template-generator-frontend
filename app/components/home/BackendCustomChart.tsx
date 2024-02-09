@@ -118,7 +118,7 @@ export default function BackendCustomChart() {
                                     {single.title}
                                 </span>
                                 <div
-                                    className={`outer-content-text-details-wrap text-sm details-wrap-${i + 1
+                                    className={`hidden lg:block outer-content-text-details-wrap text-sm details-wrap-${i + 1
                                         }`}
                                 >
                                     <h2>Get Method</h2>

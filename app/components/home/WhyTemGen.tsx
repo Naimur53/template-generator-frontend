@@ -47,7 +47,7 @@ export default function WhyTemGen() {
             <div className="container">
                 <div className="flex justify-center flex-col items-center">
                     <h2 className="home-heading">Why you need Temgen</h2>
-                    <p className="w-1/2 text-center mt-10">
+                    <p className="w-5/6 lg:w-1/2 text-center mt-10">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam
                         et iste tempora quis eum obcaecati mollitia excepturi nam{" "}
                     </p>
@@ -56,7 +56,7 @@ export default function WhyTemGen() {
                     variants={container}
                     initial="hidden"
                     whileInView="show"
-                    className="grid grid-cols-1 lg:grid-cols-3 pt-20 gap-5 "
+                    className="grid grid-cols-1 lg:grid-cols-3 pt-10 lg:pt-20 gap-5 "
                 >
                     {data.map((single) => (
                         <motion.div

@@ -33,7 +33,7 @@ export const navItemsBackend: ISingleNavItem[] = [
         title: "Template And Modules",
         to: "/mongoose-template-creator",
       },
-      { title: "Only Modules", to: "/mongooseModulesCreator" },
+      { title: "Only Modules", to: "/mongoose-modules-creator" },
     ],
   },
   {

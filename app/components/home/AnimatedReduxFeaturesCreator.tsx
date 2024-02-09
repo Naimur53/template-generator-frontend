@@ -4,7 +4,7 @@ import useOnScreen from "@/hooks/useOnScreen";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import CustomSelect, { Option } from "./CustomSelect";
-import FileExplorer from "./FileExplorer";
+import FileExplorer from "../shared/FileExplorer";
 import { IFileStructure, IFileType } from "@/interface/common";
 import { ITechnology } from "@/interface";
 import { reduxFileData } from "@/helper/dataCreator/reduxFileData";

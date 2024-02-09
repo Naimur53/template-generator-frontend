@@ -7,7 +7,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import FileExplorer from "../home/FileExplorer";
+import FileExplorer from "../shared/FileExplorer";
 import { addApis } from "@/redux/features/frontEndGen/frontEndGen";
 import ReduxCreatedFileCloseButton from "./ReduxCreatedFileCloseButton";
 import PureTextInputTaker from "../shared/PureTextInputTaker";

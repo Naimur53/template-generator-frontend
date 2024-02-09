@@ -23,6 +23,7 @@ export const navItemsFrontEnd: ISingleNavItem[] = [
     ],
   },
 ];
+
 export const navItemsBackend: ISingleNavItem[] = [
   {
     icon: "/icons/mongodb.png",
@@ -30,7 +31,7 @@ export const navItemsBackend: ISingleNavItem[] = [
     subNav: [
       {
         title: "Template And Modules",
-        to: "/mongooseTemplateCreator",
+        to: "/mongoose-template-creator",
       },
       { title: "Only Modules", to: "/mongooseModulesCreator" },
     ],

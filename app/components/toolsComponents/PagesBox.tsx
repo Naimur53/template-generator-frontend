@@ -1,7 +1,7 @@
 'use client'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FileExplorer from "../home/FileExplorer";
+import FileExplorer from "../shared/FileExplorer";
 import { faClose, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import PureTextInputTaker from "../shared/PureTextInputTaker";

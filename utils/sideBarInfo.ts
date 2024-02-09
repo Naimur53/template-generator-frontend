@@ -42,9 +42,9 @@ export const navItemsBackend: ISingleNavItem[] = [
     subNav: [
       {
         title: "Template And Modules",
-        to: "/postgresTemplateCreator",
+        to: "/postgres-template-creator",
       },
-      { title: "Only Modules", to: "/postgresModulesCreator" },
+      { title: "Only Modules", to: "/postgres-modules-creator" },
     ],
   },
 ];

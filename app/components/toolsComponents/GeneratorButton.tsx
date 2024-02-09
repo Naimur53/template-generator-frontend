@@ -1,3 +1,5 @@
+'use client'
+
 import { authKey } from "@/constants/storageKey";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useAppSelector } from "@/redux/app/store";

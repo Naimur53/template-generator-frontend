@@ -6,20 +6,20 @@ export const navItemsFrontEnd: ISingleNavItem[] = [
     icon: "/icons/react-redux.png",
     title: "React Redux",
     subNav: [
-      { title: "Create Template", to: "/reactReduxTemplateCreator" },
+      { title: "Create Template", to: "/react-redux-template-creator" },
       {
         title: "Api slice Folder creator",
-        to: "/reactReduxApiFeatureCreator",
+        to: "/react-redux-feature-creator",
       },
     ],
   },
-  { icon: "/icons/next.png", title: "Next js", to: "/nextTem" },
+  { icon: "/icons/next.png", title: "Next js", to: "/nextJs-template" },
   {
     icon: "/icons/nextRedux.png",
     title: "Next Redux",
     subNav: [
-      { title: "Create Template", to: "/nextReduxTemplateCreator" },
-      { title: "Api slice Folder creator", to: "/nextApiFeatureCreator" },
+      { title: "Create Template", to: "/next-redux-template-creator" },
+      { title: "Api slice Folder creator", to: "/next-api-feature-creator" },
     ],
   },
 ];

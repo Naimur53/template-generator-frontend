@@ -7,7 +7,7 @@ import "@/styles/StepOfBackend.css";
 import "@/styles/Sidebar.css";
 // import "@/Components/ToolsComponents/TechnologyBox/TechnologyBox.css";
 // import "@/Components/ToolsComponents/FrameworkBox/FrameworkBox.css";
-import { Providers } from "./components/shared/Provider";
+import { Providers } from "./components/shared/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

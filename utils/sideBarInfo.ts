@@ -1,7 +1,7 @@
 import { ISingleNavItem } from "@/interface";
 
 export const navItemsFrontEnd: ISingleNavItem[] = [
-  { icon: "/icons/react.png", title: "React", to: "/reactTem" },
+  { icon: "/icons/react.png", title: "React", to: "/react-template" },
   {
     icon: "/icons/react-redux.png",
     title: "React Redux",

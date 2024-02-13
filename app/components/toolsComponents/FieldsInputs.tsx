@@ -52,6 +52,7 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
         return Boolean(errors[fields]) ? "input-error" : "";
     };
     const handleDeleteButtonClick = () => {
+        console.log("click");
         if (!isDisabled && fieldsInfo?.fieldName) {
             handleDelete(num);
         } else {
@@ -64,6 +65,7 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
             );
         }
     };
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -88,14 +90,15 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
                         />
                     ) : (
                         <input
-                            className="w-[140px]  "
+                            className="w-[200px]  "
                             value={fieldsInfo?.fieldName}
                             type="text"
                         />
                     )}
+
                     {!isDisabled ? (
                         <select
-                            className={isErrorClass("type")}
+                            className={`${isErrorClass("type")} cursor-pointer px-4 pr-4 max-w-[240px]`}
                             disabled={isDisabled}
                             defaultValue={fieldsInfo?.type || ""}
                             {...register("type", { required: "Type is require" })}
@@ -115,9 +118,10 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
                             type="text"
                         />
                     )}
+
                     {!isDisabled ? (
                         <input
-                            className="w-[100px]"
+                            className="w-[120px]"
                             disabled={isDisabled}
                             placeholder="Length"
                             type="number"
@@ -126,7 +130,7 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
                     ) : (
                         fieldsInfo?.length && (
                             <input
-                                className="w-[100px]"
+                                className="w-[120px]"
                                 defaultValue={fieldsInfo?.length}
                                 disabled={isDisabled}
                                 placeholder="Length"
@@ -138,39 +142,42 @@ export default function FieldsInputs({ num, moduleName, handleDelete, isDisabled
                     {/* require box */}
                     {!isDisabled ? (
                         <div className="input-box">
-                            <>
+                            <p className="text-lg text-white flex items-center cursor-pointer  !px-3 py-0.5 gap-2">
                                 <input
+                                    className="cursor-pointer"
                                     type="checkbox"
                                     {...register("isRequired")}
                                     id={isDisabled ? undefined : `re-${num}`}
                                 />
-                                <label htmlFor={isDisabled ? undefined : `re-${num}`}>
+                                <label className="cursor-pointer" htmlFor={isDisabled ? undefined : `re-${num}`}>
                                     Is Required
                                 </label>
-                            </>
+                            </p>
                         </div>
                     ) : (
                         fieldsInfo?.isRequired && (
                             <div className="input-box">
-                                <label className="font-bold !text-sm">Required</label>
+                                <label className="font-bold !px-4 !text-sm !py-1.5">Required</label>
                             </div>
                         )
                     )}
                     {/* unique */}
                     {!isDisabled ? (
                         <div className="input-box">
-                            <input
-                                disabled={isDisabled}
-                                type="checkbox"
-                                {...register("isUnique")}
-                                id={`un-${num}`}
-                            />
-                            <label htmlFor={`un-${num}`}>Is Unique</label>
+                            <p className="text-lg text-white flex items-center py-0.5  !px-3 cursor-pointer gap-2">
+                                <input className="cursor-pointer"
+                                    disabled={isDisabled}
+                                    type="checkbox"
+                                    {...register("isUnique")}
+                                    id={`un-${num}`}
+                                />
+                                <label className="cursor-pointer" htmlFor={`un-${num}`}>Is Unique</label>
+                            </p>
                         </div>
                     ) : (
                         fieldsInfo?.isUnique && (
                             <div className="input-box">
-                                <label className="font-bold !text-sm">Unique</label>
+                                <label className="font-bold !px-4 !text-sm !py-1.5">Unique</label>
                             </div>
                         )
                     )}

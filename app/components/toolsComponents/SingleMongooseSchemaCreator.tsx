@@ -113,6 +113,7 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                     <FontAwesomeIcon className="" icon={faPlus} />
                 </button>
             </div>
+
             {Boolean(fields.length) && (
                 <div className="mt-5">
                     <h4 className="mb-3">Added Fields</h4>
@@ -128,6 +129,7 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                     ))}
                 </div>
             )}
+
             <div className="mt-5">
                 {Boolean(fields.length) && <h4 className="mb-3">Add New Fields</h4>}
                 {fieldsNumber.map((single) => (
@@ -139,11 +141,12 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                     />
                 ))}
             </div>
+
             <div className="mt-5">
                 <div className="flex gap-3 items-center">
                     <input
                         type="checkbox"
-                        className="w-5 h-5"
+                        className="w-5 h-5 cursor-pointer"
                         checked={shouldAddPaginationAndQuery}
                         onChange={(e) =>
                             dispatch(
@@ -157,9 +160,10 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                     />
                     <p className="text-xl">Add Pagination And Query</p>
                 </div>
+
                 {shouldAddPaginationAndQuery ? (
                     <div
-                        className={`grid grid-cols-2 gap-28 pagination-and-query  mt-2 ml-8  transition-all ${shouldAddPaginationAndQuery
+                        className={`grid grid-cols-2 gap-28 pagination-and-query  mt-4 ml-8  transition-all ${shouldAddPaginationAndQuery
                             ? "grayscale-0 opacity-100"
                             : "grayscale opacity-50"
                             }`}
@@ -174,7 +178,7 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                                     <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
                                 </button>
                             </div>
-                            <div className="custom-multi-selection mt-2">
+                            <div className="mt-2 bg-secondary">
                                 <Select
                                     onChange={handleSearchChange}
                                     value={selectedSearch}
@@ -184,10 +188,10 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                                     primaryColor="blue"
                                     placeholder="Choose Fields"
                                     classNames={{
-                                        menu: "bg-primary",
-                                        list: "bg-primary",
+                                        menu: "bg-secondary",
+                                        list: "bg-secondary",
                                         tagItemText:
-                                            "text-blue-900 font-bold text-lg px-3 rounded-2xl ",
+                                            "text-blue-900 py-1 font-bold text-lg px-3 rounded-2xl ",
                                     }}
                                 />
                             </div>
@@ -202,7 +206,7 @@ export default function SingleMongooseSchemaCreator({ name, fields, shouldAddPag
                                     <FontAwesomeIcon icon={faInfo}></FontAwesomeIcon>
                                 </button>
                             </div>
-                            <div className="custom-multi-selection mt-2">
+                            <div className="mt-2">
                                 <Select
                                     onChange={handleExactChange}
                                     value={selectedExact}

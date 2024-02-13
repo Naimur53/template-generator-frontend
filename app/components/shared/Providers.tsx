@@ -5,12 +5,15 @@ import { motion } from "framer-motion";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import UserLoading from "./UserLoading";
+import AuthObserverLayout from "./AuthObserverLayout";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
         <motion.div>
             <Provider store={store}>
-                <motion.div className="relative z-50">{children}</motion.div>
+                <AuthObserverLayout>
+                    <motion.div className="relative z-50">{children}</motion.div>
+                </AuthObserverLayout>
                 <ToastContainer
                     position="bottom-center"
                     theme={"dark"}

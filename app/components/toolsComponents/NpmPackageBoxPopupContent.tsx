@@ -48,7 +48,7 @@ export default function NpmPackageBoxPopupContent() {
             </div>
             <div className="h-[400px] overflow-y-scroll pr-2 ">
                 {unSelectedNpmPackages.length ? (
-                    <div className="grid grid-cols-4 gap-3 mt-5">
+                    <div className="grid grid-cols-3 gap-3 mt-5">
                         {unSelectedNpmPackages.map((single) => (
                             <button
                                 onClick={() => handleAddNewPage(single)}
@@ -59,9 +59,9 @@ export default function NpmPackageBoxPopupContent() {
                                 key={single.name}
                             >
                                 <p className="text-lg font-robot text-center">{single.name}</p>
-                                <div className="hover:text-blue-300 mt-2 hover:underline">
+                                <div className="hover:text-blue-300 mt-2">
                                     <CustomLink target="_blank" href={single.doc}>
-                                        {single.version}
+                                        <span className="underline underline-offset-2">{single.version}</span>
                                     </CustomLink>
                                 </div>
                             </button>
@@ -81,7 +81,7 @@ export default function NpmPackageBoxPopupContent() {
                     className="font-bold text-lg font-robot rounded-lg bg-blue-500 px-3 py-1 disabled:grayscale grayscale-0 transition-all"
                     onClick={handleAddToStore}
                 >
-                    Add
+                    Add Package
                 </button>
             </div>
         </div>

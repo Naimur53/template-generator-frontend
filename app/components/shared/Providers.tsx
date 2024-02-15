@@ -22,7 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
                     limit={1}
                     autoClose={3500}
                 />
-                {/* <UserLoading /> */}
+                <UserLoading />
             </Provider>
         </motion.div>
     )

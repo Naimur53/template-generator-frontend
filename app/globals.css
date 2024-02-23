@@ -160,3 +160,21 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.ant-table-thead .ant-table-cell {
+  background-color: #0d0d26 !important;
+  color: #fff !important;
+}
+
+.ant-table-container {
+  background-color: #0d0d26 !important;
+  color: #fff;
+}
+
+.ant-table-container:hover
+  .ant-table-tbody:hover
+  .ant-table-row:hover
+  .ant-table-row-level-0:hover {
+  color: #000 !important;
+  background-color: red !important;
+}

@@ -23,9 +23,9 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: TSidebarProps) 
             icon: faBorderAll,
         },
         {
-            to: "/all-user",
-            matchUrl: "/dashboard/all-user",
-            name: "All User",
+            to: "/active-user",
+            matchUrl: "/dashboard/active-user",
+            name: "Active User",
             icon: faUsers,
         },
         {
